@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象01</title>
+	<script type="text/javascript">
+		//创建对象
+		var hero = new Object();     
+		//属性（特征，名词）
+		hero.name = "关羽";
+		hero.level = 0;  //等级
+		hero.diamond = 0;  //钻石数
+
+		//方法（行为，名词）
+		hero.moveLeft = function () {
+			console.log("Left");
+		};
+		hero.attack = function (name) {
+			// this 表示当前这个对象
+			// 只有在当前hero对象的方法中，this才是当前hero对象
+			console.log(this.name + "攻击" + name);
+		};
+
+
+		//获取对象的属性值
+		console.log(hero.name);
+		console.log(hero.level);
+
+		//调用对象的方法
+		hero.attack("怪兽1号");
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

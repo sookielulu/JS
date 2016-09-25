@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>递归</title>
+	<script type="text/javascript">
+		
+		//求一个数字各位上的数字之和
+		function getSum(n) {
+			// 结束的条件
+			if (n < 10) {
+				return n;
+			}
+
+			return n % 10 + getSum( parseInt(n / 10));
+		}
+
+		console.log(getSum(246));
+
+
+
+		//求Fibonacci数列的第n个数
+		//1 1 2 3 5 8 13 21...
+
+		function getF(n) {
+			if (n <= 0) {
+				return -1;  //非法的数
+			}
+			if (n == 1 || n == 2) {
+				return 1;
+			}
+			return getF(n - 1) + getF(n - 2);
+		}
+		console.log(getF(8));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

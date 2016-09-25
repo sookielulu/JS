@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象03（自定义构造函数）</title>
+	<script type="text/javascript">
+		//自定义构造函数 --- 构造函数：构造一个对象，并且返回新对象
+
+		function Student(name, age, male, score){
+			// 对象的属性
+			this.name = name;
+			this.age = age;
+			this.male = male;
+			this.score = score;
+
+			//对象的方法
+			this.sayHi = function () {
+				console.log("大家好，我是" + this.name);
+			}
+		}
+
+		var s1 = new Student("张三", 20, "男", 80);
+		var s2 = new Student("李四", 30, "男", 90);
+
+		s1.sayHi();
+		s2.sayHi();
+
+
+
+
+		//可以用两种方法添加属性：
+		//  1、st.score = 90;
+		//  2、st["score"] = 90;
+
+		var  st = new Object();
+		
+		for (var i = 0; i < 10; i++) {
+			//若要动态添加属性，则法2可能更简便
+			st["score" + i] = i;     //st.score1 = 1;  st.score2 = 2;  st.score3 = 3;.....
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

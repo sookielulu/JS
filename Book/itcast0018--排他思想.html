@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>排他思想</title>
+    <style>
+        .demo {
+            background-color: pink;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var btns = document.getElementsByTagName("button");
+            for(var i=0; i<btns.length; i++){
+                //给每个button定义一个index属性
+                btns[i].index = i;
+
+                btns[i].onclick = function () {
+                    alert(this.index);
+
+                 // 点击完毕时候，首先去掉按钮
+                    for(var j=0; j<btns.length; j++){
+                        btns[j].className= "";
+                    }
+                 // 剩下自己
+                    this.className = "demo";
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<button>思想原理</button>
+<button>思想原理</button>
+<button>思想原理</button>
+<button>思想原理</button>
+<button>思想原理</button>
+<button>思想原理</button>
+</body>
+</html>

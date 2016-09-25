@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选中之后弹出层</title>
+    <style>
+        div {
+            width: 300px;
+            margin: 50px;
+        }
+        #demo {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;  
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            function $(id) {
+                return document.getElementById(id);
+            }
+            $("test").onmouseup = function (event) {
+                var event = event || window.event;
+                var x = event.clientX; //鼠标的x坐标
+                var y = event.clientY;
+                var txt = "";  //存储文字的变量
+                if (window.getSelection) {
+                    txt = window.getSelection().toString();
+                }else {
+                    txt = document.selection.createRange().text;
+                }
+
+                if (txt) { //若选中了文字
+                    showBox(x, y, txt);//调用函数
+                }
+            }
+
+            //点击空白处隐藏
+            document.onclick = function (event) {
+                var event = event || window.event;
+                var targetId = event.target ? event.target.id : event.srcElement.id;
+                //注意上面是 event.target ?  而不是event.target.id ?
+
+                if (targetId != "demo") {
+                    $("demo").style.display = "none";
+                }
+            }
+            function showBox(mousex, mousey, contenttxt) {
+                setTimeout(function () { //延时显示
+                    $("demo").style.display = "block";
+                    $("demo").style.left = mousex + "px";
+                    $("demo").style.top = mousey + "px";
+                    $("demo").innerHTML = contenttxt;
+                },100);
+            }
+        }
+    </script>
+</head>
+<body>
+<span id="demo"></span>
+<div id="test">
+    该活动由中国青少年宫协会、中国国际青少年文化交流协会共同主办，活动旨在全面贯彻习近平总书记重要讲话精神，深入落实国家足球改革有关要求，培养广大少年儿童对足球运动的兴趣爱好，积极参与校园足球运动，全面提升体质体能，通过活动传播快乐足球的理念，传播挑战、超越、无止境的足球精神，进一步在广东推动我国青少年足球事业迈向新的高度
+</div>
+<div id="another">
+    这里是选中不能弹出的文字这里是选中不能弹出的文字这里是选中不能弹出的文字这里是选中不能弹出的文字这里是选中不能弹出的文字这里是选中不能弹出的文字这里是选中不能弹出的文字这里是选中不能弹出的文字这里是选中不能弹出的文字这里是选中不能弹出的文字这里是选中不能弹出的文字这里是选中不能弹出的文字这里是选中不能弹出的文字这里是选中不能弹出的文字
+</div>
+</body>
+</html>

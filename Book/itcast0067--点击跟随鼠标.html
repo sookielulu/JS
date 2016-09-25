@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击跟随鼠标</title>
+    <style>
+        #img {
+            width: 70px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var img = document.getElementById("img");
+            document.onclick = function (event) {
+                var event = event || window.event;
+                lastX = event.clientX - img.offsetWidth/2;
+                //  减去 img.offsetWidth/2 是为了让鼠标在图片中央
+                lastY = event.clientY - img.offsetHeight/2;
+            }
+
+            var firstX = 0, firstY = 0, lastX = 0, lastY = 0;
+            setInterval(function () {
+               firstX = firstX + (lastX - firstX) / 10;
+               firstY = firstY + (lastY - firstY) / 10;
+                img.style.left = firstX + "px";
+                img.style.top = firstY + "px";
+            },10);
+        }
+    </script>
+</head>
+<body>
+<img src="Image/click-follow-mouse-img.jpg" alt="" id="img">
+</body>
+</html>

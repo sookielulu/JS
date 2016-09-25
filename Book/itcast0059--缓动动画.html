@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓动动画</title>
+   <!--
+    缓动动画公式：
+      一个盒子的初始值是 0 ，要走到 400px 的位置
+      假设： 初始值 leader=0 ， target=400。
+         box.style.left = **** + "px";
+    公式为： leader = leader + (target - leader)/10 ;
+    -->
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 100px;
+            left: 0;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById("btn");
+            var bpx =document.getElementById("bo");
+            var num = 0, target = 500;
+            btn.onclick = function () {
+                setInterval(function () {
+                    num = num + (target-num)/10;  //是一个速度减缓的过程(步长逐渐减小)
+                   /*
+                    第一次运算：num=50;  即从 0 走到 50，步长为 50
+                    第二次运算：num=95;  即从 50 走到 95，步长为45
+                    第三次运算：num=135; 即从 95 走到 135，步长为40
+                    */
+                    if (num>500) {
+                        clearInterval(this.callee);
+                    }else {
+                        bpx.style.left = num + "px";
+                    }
+                },20);
+            }
+        }
+    </script>
+</head>
+<body>
+<button id="btn">开始</button>
+<div class="box" id="bo"></div>
+</body>
+</html>

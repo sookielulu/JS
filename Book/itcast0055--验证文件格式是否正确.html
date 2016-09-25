@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证文件格式是否正确</title>
+    <script>
+        window.onload = function () {
+            var file = document.getElementById("file");
+            file.onchange = function () {
+                var path = this.value;
+                var suxxif = path.substr(path.lastIndexOf(".")).toUpperCase();
+                //alert(suxxif);
+                if (suxxif == ".PNG" || suxxif == ".JPG") {
+                    this.nextSibling.innerHTML = "文件合法";
+                }else {
+                    this.nextSibling.innerHTML = "不合法";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="file" name="" id="file"><span></span>  <!--文件域-->
+</body>
+</html>

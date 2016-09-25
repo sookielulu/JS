@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>构造函数练习</title>
+	<script type="text/javascript">
+		// var Student1 = function(name, age, gender, math, chinese, english) {
+		// 	this.name = name;
+		// 	this.age = age;
+		// 	this.gender = gender;
+		// 	this.math = math;
+		// 	this.chinese = chinese;
+		// 	this.english = english;
+		// 	this.sayHello = function () {
+		// 		alert("大家好，我是" + this.name);
+		// 	}
+		// };
+		// var stu1 = new Student1("lucy", 15, "女", 73, 99, 100);
+		// stu1.sayHello();
+
+
+
+		//采用Json
+		var Student2 = function(name, age, scores) {
+			this.name = name;
+			this.age = age;
+			this.scores = scores;
+			this.sayHello = function () {
+				alert("大家好，我是" + this.name + 
+					  "\n我的成绩分别是：数学：" + stu2.scores.math + 
+					  ", 语文：" + stu2.scores.chinese + 
+					  ", 英语：" + stu2.scores.english);
+			}
+		};
+		var stu2 = new Student2("张三", 18, {
+			math: 90,
+			chinese: 80,
+			english: 90
+		});
+		stu2.sayHello();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
