@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包版本的Tab栏切换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 335px;
+            height: 300px;
+            border: 1px solid #cccccc;
+            margin: 100px auto;
+        }
+        .mt span {
+            display: inline-block;
+            width: 80px;
+            height: 30px;
+            background-color: pink;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        .mb li {
+            width: 100%;
+            height: 270px;
+            background-color: purple;
+            list-style: none;
+            font: 400 34px/270px "宋体";
+            text-align: center;
+            color: #fff;
+            display: none;
+        }
+        .mt .current {
+            background-color: purple;
+            color: #fff;
+        }
+        .mb .show {
+            display: block;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            /*以前的写法
+            var spans = document.getElementsByTagName("span");
+            var lis = document.getElementsByTagName("li");
+            for(var i=0; i<spans.length; i++) {
+                spans[i].index = i;
+                spans[i].onmouseover = function () {
+                    for(var j=0; j<spans.length; j++) {
+                        spans[j].className = "";
+                        lis[j].className = "";
+                    }
+                    this.className = "grey";
+                    lis[this.index].className = "show";
+                }
+            }
+            */
+
+            //闭包版本写法
+            var spans = document.getElementsByTagName("span");
+            var lis = document.getElementsByTagName("li");
+            for(var i=0; i<spans.length; i++) {
+                var timer = null;
+                spans[i].onmouseover = tab(i, 300);
+                spans[i].onmouseout = function () {
+                    clearTimeout(timer);
+                }
+            }
+            function tab(num, deplay) {//添加定时器，使得鼠标停住300毫秒后才会触发事件
+                return function () {
+                    clearTimeout(timer);
+                    timer = setTimeout(function () {
+                        for(var j=0; j<spans.length; j++) {//清除所有人
+                            spans[j].className = "";
+                            lis[j].className = "";
+                        }
+                        spans[num].className = "current";//留下当前i
+                        lis[num].className = "show";//留下当前i
+                    },deplay);
+                }
+            }
+
+            //也可将67行写为
+            /*
+            spans[i].onmouseover = function tab(num) {
+                return function () {
+                    for(var j=0; j<spans.length; j++) {//清除所有人
+                        spans[j].className = "";
+                        lis[j].className = "";
+                    }
+                    spans[num].className = "current";//留下当前i
+                    lis[num].className = "show";//留下当前i
+                }
+            }(i);
+
+            */
+        }
+    </script>
+</head>
+<body>
+<div class="box">
+    <div class="mt">
+        <span class="current">新闻</span>
+        <span>财经</span>
+        <span>体育</span>
+        <span>娱乐</span>
+    </div>
+    <div class="mb">
+        <ul>
+            <li class="show">新闻模块内容</li>
+            <li>财经模块内容</li>
+            <li>体育模块内容</li>
+            <li>娱乐模块内容</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

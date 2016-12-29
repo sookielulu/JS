@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板基础语法</title>
+    <script src="template.js"></script>
+    <script id="arttemplate" type="text/html">
+        <strong>电影名称：</strong>{{name}}<br>
+        <strong style="color: red">导演：</strong>{{lead}}<br>
+        <strong style="color: orange">主演：</strong>{{role}}
+    </script>
+    <script>
+        window.onload = function () {
+            //标准json定义--必须有标题，必须有双引号
+            var film = {
+                "name": "美人鱼",
+                "lead": "周星驰",
+                "role": "邓超"
+            };
+
+            //template就是模板的一个函数。参数'arttemplate'是函数的id
+            //var html = template('arttemplate', film);
+            //document.getElementById('mydiv').innerHTML = html;
+
+            bindTemplate('mydiv','arttemplate',film);
+
+            function bindTemplate(id, templateId, data) {
+                var html = template(templateId, data);
+                document.getElementById(id).innerHTML = html;
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>电影：</h1>
+<div id="mydiv"></div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>构造函数方法的复用</title>
+	<script type="text/javascript">
+		//重要
+		//在函数中有一个属性叫prototype（原型）
+		//由该函数创建的对象会默认的链接到该属性上
+
+		function Fn() {
+			// body...
+		}
+		Fn.prototype.num = 123;
+
+		var f = new Fn();
+		f.age = 12;
+		//f.num = 1;
+
+		alert(f.num);
+		//在访问对象的某一个属性（方法）的时候，首先会在当前对象中查找有没有该属性
+		//如果当前对象没有，就会在构造方法的定义规则中查找（当前对象）
+		//如果没有，就会到与对象联系起来的构造函数的   prototype/__proto__   属性中找
+
+		//因此，可把重复型的数据放到prototype里面
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

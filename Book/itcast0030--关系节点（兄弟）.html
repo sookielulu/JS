@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>兄弟节点</title>
+    <script>
+        window.onload = function () {
+            var one = document.getElementById("one");
+            //one.nextSibling.style.backgroundColor = "red";  //IE6、7、8
+            //one.nextElementSibling.style.backgroundColor = "red";  //其它浏览器
+
+            //写成浏览器兼容
+            var go = one.nextElementSibling || one.nextSibling;
+            //注意：必须先写正常浏览器，后写IE6、7、8
+            go.style.backgroundColor = "red";
+        }
+    </script>
+</head>
+<body>
+<ul>
+    <li>123123</li>
+    <li>123123</li>
+    <li id="one">123123</li>
+    <li>123123</li>
+    <li>123123</li>
+    <li>123123</li>
+    <li>123123</li>
+    <li>123123</li>
+</ul>
+</body>
+</html>

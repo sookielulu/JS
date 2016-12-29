@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝滚动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        img {
+            vertical-align: top;
+            /*vertical-align属性：设置元素的垂直对齐方式。top:把元素的顶端与行中最高元素的顶端对齐*/
+            /*若不写，则图片底部会有3像素的空白缝隙。*/
+        }
+        .box {
+            width: 600px;
+            height: 200px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .box ul li {
+            float: left;
+        }
+         .box ul {
+            width: 400%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+    </style>
+    <script>
+        window.onload = function () {
+            var scroll = document.getElementById("scroll");
+            var ul = scroll.children[0];
+            var num = 0;
+            var timer = null;
+            timer = setInterval(autoplay,5);
+            function autoplay() {
+                num--;
+                num<=-1200 ? num = 0 : num;
+                ul.style.left = num + "px";
+            }
+            scroll.onmouseover = function () {
+                clearInterval(timer);
+            }
+            scroll.onmouseout = function () {
+                timer = setInterval(autoplay,5);
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div class="box" id="scroll">
+    <ul>
+        <li><img src="Image/wufenggundong01.jpg" alt=""></li>
+        <li><img src="Image/wufenggundong02.jpg" alt=""></li>
+        <li><img src="Image/wufenggundong03.jpg" alt=""></li>
+        <li><img src="Image/wufenggundong04.jpg" alt=""></li>
+        <li><img src="Image/wufenggundong01.jpg" alt=""></li> <!--这两行很重要-->
+        <li><img src="Image/wufenggundong02.jpg" alt=""></li>
+    </ul>
+</div>
+</body>
+</html>

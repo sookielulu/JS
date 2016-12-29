@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数01</title>
+	<script type="text/javascript">
+		 
+		 //函数定义及调用
+		 function getSum(a, b){
+		 	//需考虑a,b为空（undefined, null, 0, NaN, 空字符串）的情况
+		 	//此时a为0
+
+		 	a = a || 0;
+		 	b = b || 0;
+		 	console.log(a + b);
+		 }
+		 getSum(undefined, 6);
+
+
+		 //写函数时一定要写注释（函数三要素：定义，参数，返回值）
+
+		 /**
+		  * 求圆的面积
+		  * @param r 圆的半径（number）
+		  * @return 圆的面积（number）
+		  */
+		 function getArea(r){
+		 	// pi Math.PI
+		 	//Math.pow()  求平方
+		 	r = r || 0;
+		 	return Math.PI * Math.pow(r, 2);
+		 }
+		 console.log(getArea(3));
+
+
+		 //求数组中的最大值
+
+		 /**
+		  * 求数组最大值
+		  * @param array(Array)
+		  * @return 数组最大值
+		  */
+		  function getMax(array){
+		  	array = array || [];  //判断array是否是数组
+
+		  	if (array.length == 0) {
+		  		return ;  //如果return后面什么都不跟，返回undefined
+		  		          //如果不写return，返回undefined 
+		  	}
+
+		  	var max = array[0];
+		  	for (var i = 1; i < array.length; i++) {
+		  		max = max < array[i] ? array[i] : max;
+		  	}
+
+		  	return max;  //返回最大值
+		  }
+		  console.log(getMax());
+
+
+		  //判断一个数是不是素数
+
+		  /**
+		  * 判断一个数是不是素数
+		  * @param n(number)
+		  * @return boolean
+		  */
+
+		  function isZhiShu(n){
+		  	var isZS = true;
+		  	//Math.sqrt(n);  //对n开平方，下面n/2的地方也可用Math.sqrt(n)
+		  	for (var i = 2; i < n/2; i++) {
+		  		if (n % i == 0) {
+		  			isZS = false;
+		  		}
+		  	}
+		  	return isZS;
+		  }
+		  console.log(isZhiShu(3));
+
+
+
+		  //对数组进行排序
+
+		  function sort(array){
+		  	array = array || [];
+		  	for (var i = 0; i < array.length; i++) {
+		  		for (var j = 0; j < array.length - 1 - i; j++) {
+		  			if (array[j] > array[j + 1]) {
+		  				var tmp = array[j];
+		  				array[j] = array[j + 1];
+		  				array[j + 1] = tmp;
+		  			}
+		  		}
+		  	}
+		  	return array;
+		  }
+		  console.log(sort([2, 9, 6, 4, 2, 4, 0]));
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象基础复习01</title>
+	<script type="text/javascript">
+		 
+		 //如果传入了num就打印num的值；如果没有传入，就打印“没有参数”
+		
+		 //方法一： 
+		 //function fn(num) {
+		 // 	if (num !== undefined) {
+		 // 		console.log(num);
+		 // 	} else {
+		 // 		console.log("没有参数");
+		 // 	}
+		 // }
+
+		  fn(123);
+		  fn();
+
+		 //方法二：
+		 function fn(num) {
+		 	num = num || "没有参数";//若第一个表达式为真，则返回第一个表达式;若第一个表达式为假，则返回第二个表达式
+		 //	num = num && "没有参数";//若第一个表达式为假，则返回第一个表达式;若第一个表达式为真，则返回第二个表达式
+		 // 表达式1 && 表达式2 && 表达式1
+		 	console.log(num);
+		 }
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

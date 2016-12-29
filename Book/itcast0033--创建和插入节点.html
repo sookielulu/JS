@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建和插入节点</title>
+</head>
+<body>
+<div id="demo">
+    <div>1111111111</div>
+</div>
+<script>
+    var demo = document.getElementById("demo");
+    var childrens = demo.children;
+
+    //创建节点
+    var firstDiv = document.createElement("div");
+    var firstLi = document.createElement("li");
+
+    //插入节点
+    //  1、appendChild();   添加子节点到盒子的最后面
+    demo.appendChild(firstDiv);
+
+    //  2、insertBefore(插入的节点, 参照的节点 );  添加子节点到参照节点之前
+    //demo.insertBefore(firstLi, demo.lastChild);
+    //demo.insertBefore(firstLi, childrens[0]);
+    demo.insertBefore(firstLi, null);  //若第二个参数不写，则默认添加到最后一个节点
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
