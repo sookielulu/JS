@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>返回顶部的小火箭</title>
+    <style>
+        .text {
+            text-align: center;
+        }
+        #gotop {
+            position: fixed;
+            bottom: 50px;
+            right: 250px;
+            display: none;
+            cursor: pointer;
+        }
+    </style>
+    <script src="JSitcast0001--基本函数.js" type="text/javascript"></script>
+    <script>
+        window.onload = function () {
+            var goTop = $("gotop");
+            var leader = 0, target = 0, timer = null;
+            
+            window.onscroll = function () {
+                scroll().top > 0 ? show(goTop) : hide(goTop);
+                leader = scroll().top;
+            }
+
+            goTop.onclick = function () {
+                timer = setInterval(function () {
+                    leader = leader + (target - leader) / 10;
+                    scrollTo(0, leader); //去往页面中的某个位置
+                    if (leader == target) {
+                        clearInterval(timer);
+                    }
+                },10);
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="gotop">
+    <img src="Image/back%20to%20top.jpg" alt="" id="img">
+</div>
+<div class="text">
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+    这里是网页正文，这里是网页正文<br>
+</div>
+</body>
+</html>

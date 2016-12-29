@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function apply</title>
+    <script>
+        window.onload = function () {
+            //对象1
+            var myclass = {
+                getSum: function (num1,num2) {
+                    return num1 + num2;
+                }
+            };
+            //对象2
+            var student = {
+                getDetail: function () {
+                    return {
+                        name: 'lily',
+                        age: 14
+                    }
+                }
+            };
+
+            //借用==供爷法则
+            console.log(myclass.getSum.apply(student,[10,20]));
+
+
+            //利用apply求数组最大、小值
+            function getMAx(arr) {
+                return Math.max.apply(null,arr);
+            }
+            console.log(getMAx([1,4,7,2,0]));
+
+            //利用apply实现两数组的拼接
+            var arr1 = ["1","2","3"];
+            var arr2 = ["4","5","6"];
+            Array.prototype.push.apply(arr1,arr2);
+            console.log(arr1);
+            console.log(arr2);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

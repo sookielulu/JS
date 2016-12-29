@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日历</title>
+    <style>
+        .box {
+            width: 150px;
+            height: 200px;
+            background-color: #369;
+            margin: 100px auto;
+            text-align: center;
+        }
+        .box p {
+            height: 60px;
+            line-height: 60px;
+            font-size: 12px;
+            color: #ffffff;
+            margin-bottom: 0px;
+        }
+        .box span {
+            display: block;  /*必须写成块级元素*/
+            width: 120px;
+            height: 120px;
+            background-color: #FF6B39;
+            margin: 0 auto;
+            line-height: 120px;
+            font-size: 100px;
+            color: #333333;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var date = document.getElementById("date");
+            var time = date.children;
+
+            //日期函数
+            var arr = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            var day = new Date();
+            time[0].innerHTML = day.getFullYear() + "年" + (day.getMonth()+1) + "月"
+                              + day.getDate() + "日 " + arr[day.getDay()];
+            time[1].innerHTML = day.getDate();
+        }
+    </script>
+</head>
+<body>
+<div class="box" id="date">
+    <p></p>
+    <span></span>
+</div>
+</body>
+</html>

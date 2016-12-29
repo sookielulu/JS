@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>经典的继承代码</title>
+	<script type="text/javascript">
+		//在实际开发中，如果希望获得一个继承自对象o的对象(即把o当作原型对象)
+		//这时可以使用Object.create方法
+		//这是ES5提供的方法
+
+		//语法：  返回的是一个新对象
+		//  Object.create(作为原型对象的对象)
+
+		var o1 = {name: 'Jim'};
+		var o2 = Object.create(o1);//IE8不可用
+		//o2作为对象，它的原型对象由 构造函数的原型属性 来决定
+		//o2的原型对象是o1，所以o1就是构造函数的prototype
+
+		//缺点是：类型无关
+
+		//它会创建一个新对象，让它继承自参数对象
+		//创建新对象，就有构造函数
+		//继承对象，就有原型对象
+
+		
+		//o2有构造函数吗？
+		//o2是由create函数生成的，因此只要create函数内部有构造函数即可
+		function create(obj) {
+			function F() {}
+			//要有继承
+			F.prototype = obj;//由F  new出来的对象统统继承自obj
+			return new F();
+		}
+
+		var o3 = create(o1);
+
+
+		//在实际开发中，如果是为了兼容所有的浏览器，有2种做法
+		// 1、在原生对象中提供方法
+		if (!Object.create){
+			Object.create = function (obj) {
+				function F() {}
+				//要有继承
+				F.prototype = obj;//由F  new出来的对象统统继承自obj
+				return new F();
+			}
+		}
+
+		var o4 = Object.create(o1);
+		var _ = 0;//写这一行是为了在IE8中调试时将断点设在此处
+
+		// 2、统一用新的方法//这里是需要掌握的内容，最重要
+		var create = function (obj) {
+			if (Object.create) {
+				return Object.create(obj);
+			} else {
+				function F() {}
+				//要有继承
+				F.prototype = obj;//由F  new出来的对象统统继承自obj
+				return new F();
+			}
+		}
+		var o5 = create(obj);
+		// 无论浏览器是否支持该方法，都应该使用自己定义的方法来完成
+		// 但是在方法内部，判断浏览器是否具有该 功能
+		// 如果有该功能，则使用浏览器提供的功能
+		// 如果浏览器不支持该功能，则自己实现
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

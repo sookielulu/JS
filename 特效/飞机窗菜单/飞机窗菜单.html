@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>飞机窗菜单</title>
+    <link rel="stylesheet" href="飞机窗菜单.css">
+    <script src="JSitcast0003--封装运动框架多个属性.js" type="text/javascript"></script>
+    <script>
+        window.onload = function () {
+            var ps = document.getElementsByTagName("p");
+            var box = document.getElementById("box");
+            var divs = box.getElementsByTagName("div");
+            for (var i=0; i<divs.length; i++) {
+                divs[i].index = i;
+                divs[i].onmouseover = function () {
+                    animate(ps[this.index], {top: -ps[this.index].offsetHeight});
+                }
+                divs[i].onmouseout = function () {
+                    animate(ps[this.index], {top: 0});
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <div>
+        <a href="#" class="img1"></a>
+        <p>About</p>
+        <span></span>
+    </div>
+    <div>
+        <a href="#" class="img2"></a>
+        <p>Contact</p>
+        <span></span>
+    </div>
+    <div>
+        <a href="#" class="img3"></a>
+        <p>User</p>
+        <span></span>
+    </div>
+    <div>
+        <a href="#" class="img4"></a>
+        <p>Contact</p>
+        <span></span>
+    </div>
+</div>
+</body>
+</html>

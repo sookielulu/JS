@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装运动框架多个属性</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 50px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var btn1 = document.getElementById("btn200");
+            var btn2 = document.getElementById("btn400");
+            var box = document.getElementById("box");
+
+            btn1.onclick = function () {
+                animate(box, {width: 400, left: 200, top: 800});
+            }
+            btn2.onclick = function () {
+                animate(box, "top", 200);
+            }
+
+            function animate(obj, json) {
+                clearInterval(obj.timer);
+                obj.timer = setInterval(function () {
+
+                    //遍历 json
+                    var flag = true;  //判断是否停止定时器，一定要写在遍历的外面
+                    for (var attr in json) {
+                        var current = parseInt(getStyle(obj, attr));
+                        var step = (json[attr] - current) / 10;
+                        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                        obj.style[attr] = current + step + "px";
+
+                        //只要有一个没有走到指定位置，就不该停止定时器
+                        //这句一定要放在遍历里面
+                        if (current != json[attr]) {
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
+                        clearInterval(obj.timer);
+                    }
+                },20);
+            }
+
+            function getStyle(obj, attr) {
+                if (obj.currentStyle) {
+                    return obj.currentStyle[attr];
+                }else {
+                    return window.getComputedStyle(obj, null)[attr];
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<button id="btn200">200</button>
+<button id="btn400">400</button>
+<div id="box"></div>
+</body>
+</html>

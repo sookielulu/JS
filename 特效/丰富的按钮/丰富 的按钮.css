@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+#main {
+    width: 320px;
+    margin: 30px auto;
+}
+.box {
+    width: 320px;
+    height: 90px;
+    margin-bottom: 20px;
+    border: 1px solid #333333;
+    background-color: #ebf7e2;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow:0 0 3px #cccccc;
+    position: relative;
+}
+.line {
+    width: 1px;
+    height: 90px;
+    background-color: #333333;
+    position: absolute;
+    right: 80px;
+}
+.aLink {
+    width: 320px;
+    height: 89px;
+    margin-top: 1px;
+    background-color: #a9db80;
+    text-decoration: none;
+    position: absolute;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+.price {
+    float: left;
+    font: 500 26px/90px "microsoft yahei";
+    color: #72974f;
+    padding: 0 15px;
+    position: absolute;
+}
+.aLink img {
+    position: absolute;
+    top: 15px;
+    left: 13px;
+}
+.text {
+    float: left;
+    width: 100px;
+    font: 500 30px/40px "microsoft yahei";
+    color: #ffffff;
+    margin-top: -5px;
+    padding-left: 120px;
+}
+.text span {
+    font: 500 14px/18px "microsoft yahei";
+    color: #ffffff;
+    margin-left: -6px;
+}
+.btn {
+    width: 80px;
+    height: 90px;
+    float: right;
+    /*border-left: 1px solid #333333;*/
+}
+.btn span {
+    float: left;
+    width: 40px;
+    height: 40px;
+    background: #333333 url("image/arrow_down.png") no-repeat center center;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    margin: 25px 20px;
+}

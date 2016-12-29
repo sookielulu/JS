@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: url("image/bg.jpg") no-repeat;
+    background-size:100%;
+}
+#banner {
+    width: 100%;
+    padding: 0 400px;
+    height: 100px;
+    background: url("image/blackBj.png") left top repeat;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    z-index: 2;
+    overflow: hidden;
+}
+#banner a {
+    font: 500 20px/100px "Arial";
+    color: #ffffff;
+    margin: 0 20px;
+    text-decoration: none;
+    position: relative;
+}
+#open {
+    width: 480px;
+    height: 0;
+    padding: 0 30px;
+    background: url("image/blackBj.png") left top repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -260px;
+    display: none;
+    z-index: 4;
+    overflow: hidden;
+}
+.close a {
+    width: 30px;
+    height: 30px;
+    float: right;
+    text-decoration: none;
+    font: 700 20px/30px "Arial";
+    color: #ffffff;
+    text-align: center;
+    margin: 10px -20px 0 0;
+}
+.title {
+    margin: 40px 0 20px 0;
+    font: 500 25px/30px "Arial";
+    color: #ffffff;
+}
+#open p {
+    font: 200 15px/40px "Arial";
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

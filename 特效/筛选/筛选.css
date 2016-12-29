@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+body {
+    background: url("image/bgnoise_lg.jpg") left top repeat;
+}
+#box {
+    width: 578px;
+    margin: 70px auto;
+    background-color: pink;
+}
+#nav {
+    height: 31px;
+    background: url("image/navBj.jpg") left top repeat;
+    border: 1px solid #333333;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+#nav a {
+    display: inline-block;
+    width: 141px;
+    height: 31px;
+    text-align: center;
+    font: 700 16px/31px "microsoft yahei";
+    color: #666666;
+}
+#nav .current {
+    background: url("image/active.jpg") left top repeat;
+    color: #ffffff;
+}
+#list {
+    width: 560px;
+    margin: 20px auto;
+}
+#list ul li {
+    width: 174px;
+    height: 142px;
+    float: left;
+    margin: 5px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+#list ul li img {
+    width: 164px;
+    height: 132px;
+    display: block;
+    border: 5px solid #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;;
+}
+#list ul li span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 172px;
+    left: 0;
+    background: rgba(71,151,273,0.5);
+    font: 400 20px/130px "songti";
+    color: #ffffff;
+    text-align: center;
+}

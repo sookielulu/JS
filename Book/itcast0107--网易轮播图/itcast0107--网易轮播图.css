@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+img {
+    vertical-align: top;
+}
+.w-slider {
+    width: 310px;
+    height: 265px;
+    margin: 100px auto;
+    /*background-color: pink;*/
+    position: relative;
+    overflow: hidden;
+}
+.slider {
+    width: 310px;
+    height: 220px;
+}
+.slider-main {
+    width: 620px;
+    height: 220px;
+}
+.slider-main-img {  /*采用绝对定位使图片全部叠在一起*/
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.slider-ctrl {
+    text-align: center;
+    padding-top: 5px;
+}
+.slider-ctrl-con {
+    width: 24px;
+    height: 20px;
+    display: inline-block;
+    background: url("../itcast0107--网易轮播图/image/wangyilunbotu-icon.png") no-repeat -24px -782px;
+    cursor: pointer;
+    margin: 0 5px;
+    text-indent: -2em;  /*这两行的作用是隐藏span的innerHTml*/
+    overflow: hidden;
+}
+.current {
+    background-position: -24px -762px;
+}
+.slider-ctrl-prev,
+.slider-ctrl-next {
+    width: 30px;
+    height: 35px;
+    background: url("../itcast0107--网易轮播图/image/wangyilunbotu-icon.png") no-repeat 6px top;
+    position: absolute;  /*要相对最大的盒子w-slider进行定位*/
+    top: 50%;
+    margin-top: -35px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.slider-ctrl-prev {
+    left: 0;
+}
+.slider-ctrl-next {
+    right: 0;
+    background-position: -6px -44px;
+}

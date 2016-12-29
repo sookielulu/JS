@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承</title>
+	<script type="text/javascript">
+		// 面向对象的特征就是封装、继承、多态
+		// 封装：将复杂包裹，隐藏起来，让简单的东西预留在外面
+		// 继承：拿来主义，自己没有，把别人的拿过来，让其成为自己的
+
+		// 在JS中，有两种继承模型
+		//  1、原型继承
+		//  2、组合继承
+
+		// 1、原型继承
+		// 如果需要让一个对象有某一个行为（属性、方法），那么可以考虑将这个行为加到原型对象中，
+		// 那么这个对象就继承自原型对象，获得了该行为
+
+		// 2、组合继承
+		// 就是将其它的对象中的成员加到自己身上
+		var o1 = {name: "Jack", age:19, gender:"male"};
+		var o2 = {score: {
+			math:100,
+			english:90,
+			chinese:80
+		}};
+		//让o2继承自o1
+		//将o1的成员加到o2上
+		// for (var k in o1){
+		// 	o2[k] = o1[k];
+		// }
+
+		//由于for in 循环中的对象可以随意替代，因此o2可以继承自任意对象
+		//因此，这种继承方式成为组合继承
+		//这里希望o2可以继承自任意对象，所以为了简化继承的代码，给o2提供了一个方法，叫extend
+		o2.extend = function (obj) {
+			for (var k in obj){
+				this[k] = obj[k];
+			}
+		};
+		o2.extend(o1);
+		for (var m in o2) {
+			console.log(o2[m]);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>callee</title>
+    <script>
+        window.onload = function () {
+            //传统递归方式
+            //1、破坏了 零重复法则 一旦函数名称更改，需要更改多处
+            //2、fn是一个全局变量。fn内部一般使用局部变量，而这里是一个全局变量，是一个潜在的变量污染
+            var fn = function (n) {
+                if(n>0) return n+fn(n-1);
+                return 0;
+            };
+            alert('采用传统方式'+fn(5));
+
+            //callee用处2 调用自身--比如递归函数
+            //优点：这样就让代码更加简练，又防止了全局变量的污染
+            var fnn = (function (n) {
+                if(n>0) return n+arguments.callee(n-1);
+                return 0;
+            })(10);
+            alert('采用callee方式：'+fnn);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

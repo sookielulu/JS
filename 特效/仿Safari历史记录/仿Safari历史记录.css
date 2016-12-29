@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul {
+    list-style: none;
+}
+body {
+    background: url("image/bg.jpg") left top repeat;
+}
+#box {
+    width: 480px;
+    height: 316px;
+    margin: 100px auto;
+    position: relative;
+}
+#btn {
+    width: 50px;
+    height: 22px;
+    position: absolute;
+    top: -30px;
+    left: 215px;
+}
+#btn .btn1 {
+    width: 22px;
+    height: 22px;
+    background: url("image/arrows.png") no-repeat left top;
+    float: left;
+}
+#btn .btn2 {
+    width: 22px;
+    height: 22px;
+    background: url("image/arrows.png") no-repeat right top;
+    float: right;
+}
+#ul {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    position: relative;
+    z-index: 1;
+}
+#ul li {
+    width: 480px;
+    height: 316px;
+    background: url("image/browser.png") no-repeat center center;
+    background-size: 100%;
+    position: relative;
+    float: left;
+    box-shadow:0 4px 14px rgba(0,0,0,0.6);
+    opacity: 0;
+    cursor: pointer;
+}
+#ul li img {
+    position: absolute;
+    top: 43px;
+}
+#ul .cur {
+    position: absolute;
+    z-index: 4;
+    opacity: 1;
+}
+#ul .left {
+    position: absolute;
+    left: -300px;
+    opacity:0.9;
+    -webkit-transform:perspective(1100px) translate(-300px, 10px) rotateY(50deg) scale(0.9);
+    -moz-transform:perspective(1500px) translate(0px, 10px) rotateY(50deg) scale(0.8);
+    -ms-transform:perspective(1100px) translate(-300px, 10px) rotateY(50deg) scale(0.9);
+    -o-transform:perspective(1100px) translate(-300px, 10px) rotateY(50deg) scale(0.9);
+}
+#ul .right {
+    position: absolute;
+    left: 300px;
+    opacity:0.9;
+    -webkit-transform:perspective(1100px) translate(300px, 10px) rotateY(-50deg) scale(0.9);
+    -moz-transform:perspective(1100px) translate(0px, 10px) rotateY(-50deg) scale(0.8);
+    -ms-transform:perspective(1100px) translate(300px, 10px) rotateY(-50deg) scale(0.9);
+    -o-transform:perspective(1100px) translate(300px, 10px) rotateY(-50deg) scale(0.9);
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象05（对象字面量）</title>
+	<script type="text/javascript">
+		//数组的字面量
+		var arr = [];
+
+		//使用构造函数创建数组
+		var arr = new Array();
+
+		//使用构造函数创建对象
+		var o = new Object();
+
+		//对象的字面量
+		var o = {
+			name: "Jack",
+			age: 17,
+			salary: 100,
+			sayHi: function () {
+				console.log("大家好，我是" + this.name);
+			}
+		};
+		console.log(o.name);
+
+		console.log("~~~~~~~~~~~");
+
+		//采用遍历输出对象的属性和方法
+		//也可用这个方法遍历系统方法，用来查询，但是有些系统方法设置为不可遍历
+		for (var key in o) {
+			// key 是对象的属性  键
+			console.log(key);
+			console.log(o[key]);
+		}
+
+		//JSON(JavaScript Object Notation 即JavaScript对象表示形式)
+		//JSON是描述数据的一种标准规范
+		//JSON和对象字面量的区别：
+		//   1、JSON的属性必须用双引号引起来，对象字面量可以省略
+		var o = {
+			"name": "Jack",
+			"age": 13, 
+		}; 
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
