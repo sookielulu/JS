@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组转换</title>
+</head>
+<body>
+<script>
+    var txt = ["aa", "bb", "cc"];
+    console.log(txt.join("-"));   /*转换成字符串，数组本身不改变*/
+    console.log(txt);
+    console.log(txt.join());   /*省略则默认用逗号分隔*/
+    console.log(txt);
+
+
+    console.log("~~~~~~~~~~~~");
+
+
+    var txt = "aa,bb,cc";
+    console.log(txt.split(","));
+
+    var txt = "aa~bb~cc";
+    console.log(txt.split("~"));
+</script>
+</body>
+</html>

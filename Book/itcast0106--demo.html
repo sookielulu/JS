@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <style>
+        #demo {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var demo = document.getElementById("demo");
+            console.log(demo.currentStyle.width);
+            console.log(demo.currentStyle.opacity);
+        }
+    </script>
+</head>
+<body>
+<div id="demo"></div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>相册</title>
+	<link rel="stylesheet" type="text/css" href="重置样式表.css">
+	<link rel="stylesheet" type="text/css" href="Photo.css">
+	<script type="text/javascript" src="Photo.js"></script>
+</head>
+<body>
+    <!-- 
+    	<a id="link" href="http://www.baidu.com" onclick="alert('aaa')"; return false;>baidu</a>
+        
+        	onclick 表示点击后会触发alert('aaa')，确定后会进行跳转，跳转到a标签设置的href中
+        	可以采用return false来取消a标签的默认行为（即跳转） 
+
+        	但是采用这种把html和js混合在一起的写法不好，因此需在js中写，见js第2行
+    -->
+	<h1>相册走廊</h1>
+	<ul class="Photo">
+		<li>
+			<a href="Image/Photo1.jpeg" title="Photo1" onclick="showPic(this); return false;">  
+			    <!-- title表示鼠标指向的时候显示 -->
+				<!--onclick实际上是通过所在的a标签来调用的，故可用this-->
+				<img src="Image/Photo1-small.jpg" alt="Image1">
+			</a>
+		</li>
+		<li>
+			<a href="Image/Photo2.jpg" title="Photo2" onclick="showPic(this); return false;">
+				<img src="Image/Photo2-small.jpg" alt="Image2">
+			</a>
+		</li>
+		<li>
+			<a href="Image/Photo3.jpg" title="Photo3" onclick="showPic(this); return false;">
+				<img src="Image/Photo3-small.jpg" alt="Image3">
+			</a>
+		</li>
+		<li>
+			<a href="Image/Photo4.jpg" title="Photo4" onclick="showPic(this); return false;">
+				<img src="Image/Photo4-small.jpg" alt="Image4">
+			</a>
+		</li>
+	</ul>
+
+	<img id="image" src="Image/placeholder.png">
+
+	<p id="chos">选择一个图片</p>
+</body>
+</html>

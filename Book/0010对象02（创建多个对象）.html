@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象02（创建多个对象）</title>
+	<script type="text/javascript">
+
+	//为创建多个学生对象，可将对象封装起来，封装成一个函数
+	function creatStudent(name, age, male, score) {
+
+		//创建对象
+		var student = {};
+
+		//对象的属性
+		student.name = name;
+		student.age = age;
+		student.male = male;
+		student.score = score;
+
+		//对象的方法
+		student.sayHi = function () {
+			console.log("大家好，我是" + this.name + "，今年" + this["age"]);
+		}
+
+		return student; //返回对象
+	}
+
+	//实例s1  s2
+	var s1 = creatStudent("小明", 12, "男", 99);
+	var s2 = creatStudent("小强", 15, "男", 80);
+	console.log(s1["score"]);
+	s1.sayHi();
+	s2.sayHi();
+
+		
+
+		//以上代码也可以用自定义构造函数来写，更加简洁，见函数03
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量的数值分配 内存类型</title>
+    <script>
+        window.onload = function () {
+            var num1; //此时不进行内存分配
+            var num2 = 9; //分配内存
+
+            var num3 = num2;
+            //问题：num3分配内存吗？
+            //答：分配。彼此拥有独立的内存空间，互不影响
+
+            console.log(num2);
+            console.log(num3);
+            console.log(num2===num3);
+
+
+
+            var str1; //此时不分配内存
+            var str2 = 'lucy'; //分配内存
+            var str3 = str2; //
+
+            console.log(str2);
+            console.log(str3);
+            console.log(str2===str3);
+
+
+            //上面为值类型
+            //值类型包括：number string boolean undefined
+            console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~');
+            //下面为引用类型
+            //引用类型包括：函数  数组  object  json  null  内置对象
+
+
+            //数组：当定义一个新数组，内存会产生两个区域，
+            //这两个区域，一个存储变量（变量中保存的是数组所在地址），一个存储数组
+            var arr1 = ['lucy', 'jack'];
+            var arr2 = arr1;
+            //这里的arr2会不会分配内存，保存的只是一个地址，指向保存数组的内存区域
+
+            console.log(arr1[1]);
+            console.log(arr2[1]);
+
+            /*arr2 = ['tom', 'anna'];
+            console.log(arr1);
+            console.log(arr2);*/
+
+
+            //改动arr2时，arr1内容也会改变，是因为二者指向的其实是同一片内存区域
+            arr2[1] = 'an';
+            console.log(arr1);
+            console.log(arr2);
+
+
+            //对象、函数与数组情况类似
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

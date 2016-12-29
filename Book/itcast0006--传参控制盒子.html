@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>传参控制盒子</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 20px;
+            display: none;
+        }
+    </style>
+    <script>
+        //功能是相同的，都是为了显示某个盒子
+        function fn(obj) {
+            var target = document.getElementById(obj);
+            target.style.display = "block";
+        }
+    </script>
+</head>
+<body>
+<button onclick="fn('demo1');">第1个按钮</button>
+<button onclick="fn('demo2');">第2个按钮</button>
+<button onclick="fn('demo3');">第3个按钮</button>
+<button onclick="fn('demo4');">第4个按钮</button>
+<div id="demo1">1111</div>
+<div id="demo2">2222</div>
+<div id="demo3">3333</div>
+<div id="demo4">4444</div>
+</body>
+</html>

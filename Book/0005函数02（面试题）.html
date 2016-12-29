@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数02（面试题）</title>
+	<script type="text/javascript">
+		
+		//  第1题  请问输出结果是什么
+
+		var num = 10;
+		fun();
+		function fun() {
+			console.log(num);
+			var num = 20;
+		}
+		//  输出结果为 undefined 
+		//  解析器：
+		//     1、预解析（全局作用域）：
+		//         (1)、先找到var、function和参数
+		//         (2)、把var和function提前
+		//     2、从上到下一行一行执行代码
+		
+
+		//经过预解析之后如下：
+		/*
+			var num;
+			function fun() {
+				console.log(num);
+				var num = 20;
+			}
+
+			num = 10;
+			fun();
+		*/
+		//然后从上到下执行代码，即32、33两行，
+		//执行到33行fun()时，进入局部作用域，又开始进行预解析
+
+		//局部作用域进行预解析：找var、function和参数，经过预解析后如下：
+		/*
+			function fun(){
+				var num;
+				console.log(num);
+
+				num = 20;
+			}
+		*/
+		//局部作用域预解析结束后，执行代码，故输出为undefined
+
+
+
+
+		//  第2题   请问输出结果是什么
+
+		var a = 18;
+		f1();
+		function f1() {
+			var b = 9;
+			console.log(a);
+			console.log(b);
+			var a = '123';
+		}
+
+		//分析过程与第1题一样
+
+
+		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+
+		//  第3题
+		f2();
+		console.log(k);
+		console.log(j);
+		console.log(i);
+		function f2() {
+			var i = j = k = 9;
+			console.log(i);
+			console.log(j);
+			console.log(k);
+		}
+
+		//预解析：
+		/*
+			function f2() {
+			var i = j = k = 9;
+			console.log(i);
+			console.log(j);
+			console.log(k);
+			}
+			f2();
+			console.log(k);
+			console.log(j);
+			console.log(i);
+		*/
+
+		//然后从89行开始执行代码，执行到89行后，找到函数f2，即跳转到局部作用域解析：
+
+		/*
+			function f2() {
+			var i;    //var只有i，且此时i为局部变量，故再执行到92行时为undefined 
+			i = j = k = 9;   // j、k为全局变量
+			console.log(i);
+			console.log(j);
+			console.log(k);
+			}
+		*/
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

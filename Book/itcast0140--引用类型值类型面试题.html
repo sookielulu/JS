@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>引用类型值类型面试题</title>
+    <script>
+        window.onload = function () {
+            var a = {"x": 1};
+            var b = a;
+            a.x = 2;
+            console.log(b.x);//2
+            //a,b指向同一块内存区域，修改a其实就是修改b
+
+            a = {"x": 3};
+            console.log(b.x);//2
+            //定义一个新对象a，指向新的内存区域，b中保存的仍为对象
+
+            a.x = 4;
+            console.log(b.x);//2
+            //由于a指向的是新区域，修改a对b无影响
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

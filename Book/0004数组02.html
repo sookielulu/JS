@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组02</title>
+	<script type="text/javascript">
+		
+		//求数组中  所有数的和 以及 平均值
+		var array1 = [1, 2, 3, 4, 5, 6];
+		var sum = 0;
+		for (var i = 0; i < array1.length; i++) {
+			sum += array1[i];
+		}
+		console.log("数组中的数的和为：" + sum);
+		console.log("数组中的数的平均值为：" + sum/array1.length);
+
+		//求数组中的最大值 以及 它所在的位置
+		var array2 = [1, 9, 43, 2, 5, 7];
+		var max = array2[0];
+		var maxIndex = 0;
+		for (var i = 1; i < array2.length; i++) {
+			if (max < array2[i]){
+				max = array2[i];
+				maxIndex = i;
+			}
+		}
+		console.log("数组中的最大值为：" + max);
+		console.log("数组中的最大值的索引为：" + maxIndex);
+
+
+		//将字符串数组用\或其他符号进行分割
+		var array3 = ["aaa", "bbb", "ccc"];
+		var str1 = array3[0];
+		var seperator = "|";
+		for (var i = 1; i < array3.length; i++) {
+			str1 += seperator + array3[i];
+		}
+		console.log(str1);  //   aaa|bbb|ccc
+
+
+		//将数组中的0项去掉，剩下的数组成一个新的数组
+		var array4 = [0, 6, 8, 2, 0, 4, 6, 0, 4];
+		var newarray4 = [];
+		for (var i = 0; i < array4.length; i++) {
+			if (array4[i] !== 0){
+				newarray4[newarray4.length] = array4[i];
+			}
+		}
+		console.log(newarray4);
+
+
+		//翻转数组
+		var array5 = [1, 2, 3];
+		var newarray5 = [];
+		for (var i = array5.length - 1; i >= 0 ; i--) {
+			newarray5[newarray5.length] = array5[i];
+		}
+		console.log(newarray5);
+
+
+		//
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
