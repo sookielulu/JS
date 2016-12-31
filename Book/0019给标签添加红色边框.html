@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>给标签添加红色边框</title>
+	<script type="text/javascript">
+		 
+		 function tag(tagName) {
+		 	return document.getElementsByTagName(tagName)[0]
+		 }
+		 function id(idName) {
+		 	return document.getElementById(idName);
+		 }
+
+
+		 onload = function () {
+		 	//  1、获得元素
+		 	//var divNode = document.getElementsByTagName('div')[0];
+		 	var divNode = tag ('div');
+		 	var pNode = tag ('p');
+
+		 	
+		 	//  2、设置style属性
+		 	// node.style.border = "";
+		 	// background-color -> backgroundColor
+		 	divNode.style.border = "1px solid red";
+		 	pNode.style.border = "1px solid green";
+
+
+		 	var a = id('alink');
+		 	a.style.border = "1px solid blue";
+		 };
+
+
+	</script>
+</head>
+<body>
+	<div>div</div>
+	<div>div</div>
+	<div>div</div>
+	<div>div</div>
+	<div>div</div>
+	<p>ppp</p>
+	<p>ppp</p>
+	<p>ppp</p>
+	<p>ppp</p>
+	<p>ppp</p>
+	<a href="">1345464</a>
+	<a href="">1345464</a>
+	<a href="" id="alink">1345464</a>
+	<a href="">1345464</a>
+	<a href="">1345464</a>
+</body>
+</html>

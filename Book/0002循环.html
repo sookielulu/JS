@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>循环</title>
+	<script type="text/javascript">
+		
+		//打印九九乘法表
+		document.write("<table border='1px' cellspacing='0' cellpadding='0'>");
+			for (var i = 1; i < 10; i++) {
+				document.write("<tr>");//控制行
+				for (var j = 1; j <= i; j++) {
+					document.write("<td>");//控制列
+					document.write(i + "*" + j + "=" + i*j);
+					document.write("</td>");
+				}
+				document.write("</tr>");
+			}
+		document.write("</table>")
+
+
+		//打印正方形
+			for (var i = 0; i < 10; i++) {
+				for (var j = 0; j < 10; j++) {
+					document.write("☆");
+				}
+				document.write("<br/>");
+			}
+
+		//打印直角三角形
+			for (var i = 0; i < 10; i++) {
+				for (var j = 0; j <= i; j++) {
+					document.write("☆");
+				}
+				document.write("<br/>");
+			}
+		
+		//求200到300之间所有奇数的和
+			var sum = 0;
+			for (var i = 200; i <= 300; i++) {
+				if (i % 2 === 0) {
+					continue;
+				}
+				sum += i;
+			}
+			console.log(sum);
+			
+
+		//任意输入一个整数，求它的位数
+		//123     123/10 = 12.3   12/10 = 1.2
+
+		// var number1 = parseInt(Number(prompt("请输入一个整数：")));
+
+		// if (number1) {
+		// 	var i = 1;
+		// 	while(number1 >= 10){
+		// 		//输出位数
+		// 		number1 = parseInt(number1 / 10);
+		// 		i++;
+		// 	}
+		// 	console.log("位数为：" + i);
+		// }else if (number1 === 0) {
+		// 	console.log("位数为：1");
+		// }else{
+		// 	console.log("您输入的不是整数！");   
+		// }
+
+
+		//任意输入一个整数，翻转输出
+		// 1234
+		// 1234 % 10 = 4     1234 / 10 = 123.4
+		// 123 % 10 = 3      123 / 10 =12.3
+		//......
+
+		var number2 = parseInt(Number(prompt("请输入一个整数")));
+
+		if (number2) {
+			do {
+				tmp = number2 % 10;
+				number2 = parseInt(number2 / 10);
+				console.log(tmp);
+			}while(number2 != 0);
+
+		}else if (number2 === 0) {
+			console.log(0);
+		}else {
+			console.log("您输入的不是整数！");
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offset家族</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #grandfather {
+            width: 600px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            background-color: #FF6B39;
+            padding: 100px;
+            border: 1px solid black;
+        }
+        #father {
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+            margin: 100px;
+            margin-left: 30px;
+        }
+        #son {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var son = document.getElementById("son");
+            console.log(son.offsetLeft);
+            //找的是父级元素。若father加了定位则相对于father，若没加则找father的父级，即grandfather
+            //若父级均无定位，则是相对于body
+        }
+    </script>
+</head>
+<body>
+<div id="grandfather">
+    <div id="father">
+        <div id="son"></div>
+    </div>
+</div>
+</body>
+</html>

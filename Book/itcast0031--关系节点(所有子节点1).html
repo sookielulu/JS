@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>所有子节点1</title>
+</head>
+<body>
+<ul id="ul">      <!--第1个节点(换行)-->
+    <li>123</li>  <!--第2、3个节点(li 、换行)-->
+    <li>123</li>  <!--第4、5个节点(li 、换行)-->
+    <li>123</li>  <!--第6、7个节点(li 、换行)-->
+</ul>
+<script>
+    var ul = document.getElementById("ul");
+    var childrens = ul.childNodes; //选择全部的孩子(li)，如果li里面还有一层，不选li里面的那层
+    //alert(childrens.length);  //7，原因如8-11行注释
+    for(var i=0; i<childrens.length; i++) {
+        if(childrens[i].nodeType == 1) {
+            childrens[i].style.backgroundColor = "pink";
+        }
+    }
+</script>
+</body>
+</html>

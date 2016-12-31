@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offset家族</title>
+    <style>
+        
+    </style>
+    <script>
+        window.onload = function () {
+            var son = document.getElementById("son");
+            alert(son.parentNode.id);
+            alert(son.offsetParent.tagName);
+        }
+    </script>
+</head>
+<body>
+<div id="gf">
+    <div id="fa">
+        <div id="son"></div>
+    </div>
+</div>
+</body>
+</html>

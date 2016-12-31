@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组01</title>
+</head>
+<script type="text/javascript">
+	
+	//数组中为0-100的每个数
+
+	var array1 = [];
+	for (var i = 0; i <= 100; i++) {
+		array1 [i] = i;	
+	}
+	console.log(array1);
+
+
+	//数组中为0-100间所有的奇数
+
+	var array2 = [];
+	for (var i = 0; i <= 100; i++) {
+		if (i % 2 !== 0) {
+			array2 [array2.length] = i;
+		}
+	}
+	console.log(array2);
+
+
+	//数组中为0-100间所有能被3整除的数，并输出数组长度
+
+	var array3 = [];
+	for (var i = 0; i <= 10; i++) {
+		if (i % 3 == 0) {
+			array3[array3.length] = i;
+		}
+	}
+	console.log(array3);
+	console.log(array3.length);
+
+</script>
+<body>
+	
+</body>
+</html>
