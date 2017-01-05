@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画框架复习</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            margin: 100px;
+            background-color: palevioletred;
+            position: absolute;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("#btn").on('click', function () {
+                $('#box').animate({
+                    width: 200,
+                    left: 200
+                    //animate不能用于改变背景颜色，可下载插件
+                    //'background-color': '#CD87DB'
+                },1000,function () {
+                    alert('ok');
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="box"></div>
+<button id="btn">start</button>
+</body>
+</html>

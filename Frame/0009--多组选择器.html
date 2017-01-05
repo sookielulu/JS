@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多组选择器</title>
+    <script src="Myframe--basic.js"></script>
+    <script>
+        window.onload = function () {
+            var dom = $$.$group('h3,#mydiv,.myspan');
+            for(var i = 0,len = dom.length; i < len; i++) {
+                dom[i].style.color = 'red';
+            }
+
+            /*function $(content) {
+                var result=[],doms=[];
+                var arr = $$.trim(content).split(',');
+                //alert(arr.length);
+                for(var i=0,len=arr.length;i<len;i++) {
+                    var item = $$.trim(arr[i]);
+                    var first= item.charAt(0);
+                    var index = item.indexOf(first);
+                    if(first === '.') {
+                        doms=$$.$class(item.slice(index+1));
+                        //每次循环将doms保存在reult中
+                        //result.push(doms);//错误来源
+
+                        //错误陷阱1解决
+                        pushArray(doms,result)
+
+                    }else if(first ==='#'){
+                        doms=[$$.$id(item.slice(index+1))];
+                        //id获取的是一个元素，而不是一个数组，所以要加[]
+
+                        pushArray(doms,result)
+                    }else{
+                        doms = $$.$tag(item);
+                        pushArray(doms,result)
+                    }
+                }
+                return result;
+
+
+                function pushArray(doms,result){
+                    for(var j= 0, domlen = doms.length; j < domlen; j++){
+                        result.push(doms[j])
+                    }
+                }
+            }*/
+        }
+    </script>
+</head>
+<body>
+<h3>h3</h3>
+<div id="mydiv">id = "mydiv"</div>
+<div>div</div>
+<span>span</span><br>
+<span class="myspan">class = "myspan"</span>
+</body>
+</html>

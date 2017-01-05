@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>框架模块化</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: palegreen;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            (function (w) {
+                var Myframe = {}
+
+                /*思考需要哪几个模块*/
+                /*公共*/
+                Myframe.common = {
+                    extend: function (target, source) {
+                        //遍历对象
+                        for (var i in source) {
+                            target[i] = source[i];
+                        }
+                        return target;
+                    },
+                    //数据类型检测
+                    isNumber: function (val) {
+                        return typeof val === 'number' && isfinite(val);
+                    },
+                    isBoolean: function (val) {
+                        return typeof val === 'boolean';
+                    },
+                    isString: function (val) {
+                        return typeof val === 'string';
+                    },
+                    isUndefined: function (val) {
+                        return typeof val === 'undefined';
+                    },
+                    isNull: function (val) {
+                        return val === null;
+                    },
+                    isObj: function (str) {
+                        if(str === null || typeof str === 'undefined') {
+                            return false;
+                        }
+                        return typeof str === 'object';
+                    },
+                    isArray: function (arr) {
+                        if(arr === null || typeof arr === 'undefined') {
+                            return false;
+                        }
+                        return arr.constructor === Array;
+                    }
+                };
+                /*字符串*/
+                Myframe.common.string = {};
+                /*数组*/
+                Myframe.common.array = {};
+                /*判断数据类型*/
+                Myframe.common.type = {};
+                /*事件*/
+                Myframe.common.event = {
+                    /*绑定事件*/
+                    on: function (id, type, fn) {
+                        //var dom = document.getElementById(id);
+                        var dom = $$.isString(id) ? document.getElementById(id) : id;
+                        //如果支持
+                        //W3C版本 --火狐 谷歌 等大多数浏览器
+                        //如果你想检测对象是否支持某个属性，方法，可以通过这种方式
+                        if(dom.addEventListener ) {
+                            dom.addEventListener(type, fn, false);
+                        }else if(dom.attachEvent){
+                            //如果支持 --IE
+                            dom.attachEvent('on' + type, fn);
+                        }
+                    },
+                    /*解除事件*/
+                    un: function(id, type, fn) {
+                        //var dom = document.getElementById(id);
+                        var dom = $$.isString(id)?document.getElementById(id):id;
+                        if(dom.removeEventListener){
+                            dom.removeEventListener(type, fn);
+                        }else if(dom.detachEvent){
+                            dom.detachEvent(type, fn);
+                        }
+
+                    },
+                    /*点击*/
+                    click: function(id,fn){
+                        this.on(id,'click',fn);
+                    },
+                    /*鼠标移上*/
+                    mouseover: function(id,fn){
+                        this.on(id,'mouseover',fn);
+                    },
+                    /*鼠标离开*/
+                    mouseout: function(id,fn){
+                        this.on(id,'mouseout',fn);
+                    },
+                    /*悬浮*/
+                    hover: function(id,fnOver,fnOut){
+                        if(fnOver){
+                            this.on(id,"mouseover",fnOver);
+                        }
+                        if(fnOut){
+                            this.on(id,"mouseout",fnOut);
+                        }
+                    },
+                    //Tab
+                    tab: function (id) {
+                        //如何获取某个父元素下面的子元素
+                        var box = document.getElementById(id);
+                        var spans = box.getElementsByTagName('span');
+                        var lis = box.getElementsByTagName('li');
+
+                        //两步走
+                        //第一步: 先把上半部分实现
+                        //群体绑定事件  -- 对所有的span绑定事件
+                        //群体绑定事件
+                        for(var i = 0; i < spans.length; i++) {
+                            //自定义属性
+                            spans[i].index=i;
+                            spans[i].onmouseover = function() {
+                                //排他思想 --  将所有的span置为默认状态  --- 然后再将当前鼠标移上的span置为class -- select
+                                for(var i = 0; i < spans.length; i++) {
+                                    spans[i].className='';
+                                    lis[i].className='';
+                                }
+                                this.className='select';
+                                lis[this.index].className='select';
+                            }
+                        }
+                    },
+                    //获取事件event对象
+                    getEvent: function (e) {
+                        return e ? e : window.event;
+                    },
+                    //获取目标元素
+                    getTarget: function (e) {
+                        var event = $$.getEvent(e);
+                        return event.target || event.srcElement;
+                    },
+                    //阻止冒泡
+                    stopPropagation: function (event) {
+                        var event = $$.getEvent(event);
+                        if(event.stopPropagation) {
+                            event.stopPropagation();
+                        }else {
+                            event.cancelBubble = true;
+                        }
+                    },
+                    //阻止默认行为
+                    preventDefault: function (event) {
+                        var event = $$.getEvent(event);
+                        if(event.preventDefault) {
+                            event.preventDefault();
+                        }else {
+                            event.returnValue = false;
+                        }
+                    },
+                    //事件委托
+                    delegate: function (pid, eventType, selector, fn) {
+                        //参数处理
+                        var parent = $$.$id(pid);
+                        function handle(e) {
+                            var target = $$.getTarget(e);
+                            console.log(target.nodeName);
+                            if (target.nodeName.toLowerCase() === selector || target.id === selector || target.className.indexOf(selector) != -1) {
+                                //在事件冒泡的时候会以此遍历每个子孙后代，如果找到对应的元素，则执行如下函数
+                                //为什么使用call，因为call可以改变this指向
+                                //函数中的this默认指向window，而我们希望它指向dom
+                                fn.call(target);
+                            }
+                        }
+                        parent[eventType] = handle;
+                    }
+                };
+                /*选择 CSS 属性 html*/
+                Myframe.dom = {
+
+                    $all: function (selector, context) {
+                        context = context || document;
+                        return context.querySelectorAll(selector);//最终结果始终为一个dom的集合
+                    },
+
+                    /*css*/
+                    css: function (context, key, value) {
+                        var doms = Myframe.common.isString(context) ? Myframe.dom.$all(context) : context;
+
+                        if(doms.length) {//如果获取的是集合
+                            if(value) {
+                                //获取模式
+                                for(var i = 0; i < doms.length; i++) {
+                                    setStyle(doms[i], key, value);
+                                }
+                            }else {
+                                return getStyle(doms[0], key);
+                            }
+                        }else{//如果只有1个dom元素
+                            if(value) {
+                                //获取模式
+                                setStyle(doms, key, value);
+                            }else {
+                                return getStyle(doms, key);
+                            }
+                        }
+
+                        //设置
+                        function setStyle(dom, key, value) {
+                            dom.style[key] = value;
+                        }
+                        //获取
+                        function getStyle(dom, key) {
+                            if(dom.currentStyle) {
+                                //IE
+                                return dom.currentStyle[key];
+                            }else {
+                                //标准浏览器
+                                return window.getComputedStyle(dom,null)[key];
+                            }
+                        }
+                    }
+                };
+                /*Ajax*/
+                Myframe.common.ajax = {};
+
+                w.$$ = Myframe
+            })(window);
+
+
+
+            $$.dom.css('#box','width','100px');
+            /*注意190行要改变$$*/
+        }
+
+
+
+    </script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

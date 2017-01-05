@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取样式</title>
+    <style>
+        p {
+            font: 400 20px/50px "microsoft yahei";
+            color: #999;
+        }
+    </style>
+    <script src="Myframe--basic.js"></script>
+    <!--<script src="itcast.js"></script>-->
+    <script>
+        window.onload = function () {
+            var doms = $$.$all("#container p");
+
+            //传统方式获取样式
+            //缺点：无法获取动态添加的样式
+            console.log(doms[0].style.color);
+
+
+            //
+            function getStyle(doms, key) {
+                if(doms[0].currentStyle) {
+                    //IE
+                    return doms[0].currentStyle[key];
+                }else {
+                    //标准浏览器
+                    return window.getComputedStyle(doms[0],null)[key];
+                }
+            }
+
+
+            //css框架：获取样式+设置样式
+            //传递2个参数时，为获取
+            //传递3个参数时，为设置
+
+            $$.css('#container p', 'color', 'orange');
+            console.log($$.css('#container p', 'color'));
+            console.log($$.css('#container p', 'font-size'));
+            console.log($$.css('#container p', 'line-height'));
+
+
+            /*function css(context, key, value) {
+                var doms = $$.isString(context) ? $$.$all(context) : context;
+
+                if(doms.length) {//如果获取的是集合
+                    if(value) {
+                        //获取模式
+                        for(var i = 0; i < doms.length; i++) {
+                            setStyle(doms[i],key, value);
+                        }
+                    }else {
+                        getStyle(doms[0], key);
+                    }
+                }else{//如果只有1个dom元素
+                    if(value) {
+                        //获取模式
+                        setStyle(doms, key, value);
+                    }else {
+                        getStyle(doms, key);
+                    }
+                }
+
+                //设置
+                function setStyle(dom, key, value) {
+                    dom.style[key] = value;
+                }
+                //获取
+                function getStyle(dom, key) {
+                    if(dom.currentStyle) {
+                        //IE
+                        return dom.currentStyle[key];
+                    }else {
+                        //标准浏览器
+                        return window.getComputedStyle(dom,null)[key];
+                    }
+                }
+            }*/
+        }
+    </script>
+</head>
+<body>
+<div id="container">
+    <p>钢铁侠</p>
+    <p>美国队长</p>
+</div>
+</body>
+</html>

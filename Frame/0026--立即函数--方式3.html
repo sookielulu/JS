@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>立即函数-方式3</title>
+    <script>
+        (function (w) {  //w为形参
+            var name = 'jack';
+            var age = 20;
+
+            var json = {
+                name: name,
+                age: age,
+                on: function () {//还可以定义自己的方法
+                    console.log('事件框架的on函数')
+                },
+                in: function () {}
+            };
+
+            w.$$ = json;
+        })(window);  //window为实参，即20行的w是这里传进去的参数window
+
+        //通过传参形式可以提高性能
+
+        $$.on();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

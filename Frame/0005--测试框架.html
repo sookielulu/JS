@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试框架</title>
+    <style>
+        #div {
+            width: 200px;
+            height: 200px;
+            background-color: palegreen;
+        }
+    </style>
+    <script src="Myframe--basic.js"></script>
+    <script>
+        window.onload = function () {
+            //原始方式
+            /*var btn1 = $$.$id("btn1");
+            var div = $$.$id("div");
+
+            div.addEventListener('click',function () {
+                this.style.backgroundColor = 'orange';
+            },false);*/
+
+            //采用框架中的click
+            $$.click('div', function (e) {
+                //this.style.backgroundColor = 'orange';
+                $$.getTarget(e).style.backgroundColor = 'orange';
+            });
+            /*$$.mouseover('div',function () {
+                this.style.backgroundColor = 'red';
+            });
+            $$.mouseout('div',function () {
+                this.style.backgroundColor = 'palegreen';
+            })*/
+            $$.hover('div', function () {
+                this.style.backgroundColor = 'red';
+            },function () {
+                this.style.backgroundColor = 'palegreen';
+            })
+        }
+    </script>
+</head>
+<body>
+<button id="btn1">点击</button>
+<div id="div"></div>
+</body>
+</html>

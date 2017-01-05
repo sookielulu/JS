@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>层次选择器</title>
+    <script src="Myframe--basic.js"></script>
+    <script>
+        window.onload = function () {
+            $cengci('#container .div1 p')[0].style.color = 'red';
+
+            function $cengci(select) {
+                /*var sel = select.split(' ');
+                var context = [];
+                var result = [];
+                for(var i = 0; i < sel.length; i++) {
+                    var item = sel[i];
+                    var first = item.charAt(0);
+                    var index = item.indexOf(first);
+                    var name = item.slice(index+1);
+                    if (first === '#') {
+                        context = [$$.$id(name)];
+                    }else if(first === '.') {
+                        for(var j = 0; j < context.length; j++) {
+                            result.pushArray($$.$class(name, context[i]));
+                            context = result;
+                        }
+                    }
+                }*/
+                var sel = $$.trim(select).split(' ');
+                var result = [];
+                var context = [];
+                for (var i = 0, len = sel.length; i < len; i++) {
+                    result = [];
+                    var item = $$.trim(sel[i]);
+                    var first = sel[i].charAt(0);
+                    var index = item.indexOf(first);
+                    if (first === '#') {
+                        pushArray([$$.$id(item.slice(index + 1))]);
+                        context = result;
+                    } else if (first === '.') {
+                        if (context.length) {
+                            for (var j = 0, contextLen = context.length; j < contextLen; j++) {
+                                pushArray($$.$class(item.slice(index + 1), context[j]));
+                            }
+                        } else {
+                            pushArray($$.$class(item.slice(index + 1)));
+                        }
+                        context = result;
+                    } else {
+                        if (context.length) {
+                            for (var j = 0, contextLen = context.length; j < contextLen; j++) {
+                                pushArray($$.$tag(item, context[j]));
+                            }
+                        } else {
+                            pushArray($$.$tag(item));
+                        }
+                        context = result;
+                    }
+                }
+
+                return context;
+
+                function pushArray(doms) {
+                    for (var j = 0, domlen = doms.length; j < domlen; j++) {
+                        result.push(doms[j])
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="container">
+    <h3>title</h3>
+    <div class="div1">
+        <p class="moshou">魔兽世界1</p>
+        <p class="hero">英雄联盟1</p>
+        <p class="drem">梦幻西游1</p>
+    </div>
+    <div class="div2">
+        <p class="moshou">魔兽世界2</p>
+        <p class="hero">英雄联盟2</p>
+        <p class="drem">梦幻西游2</p>
+    </div>
+</div>
+</body>
+</html>

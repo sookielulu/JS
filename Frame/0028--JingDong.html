@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JingDong</title>
+    <script>
+        window.onload = function () {
+            var JD = {
+                verstion:'1.0'
+            };
+
+            /*命名空间的作用就是把代码进行分类管理，将代码进行隔离，解决污染*/
+
+
+            //公共模块
+            JD.common = {
+                each: function () {},
+                map: function () {},
+                isArray: function () {},
+                isString: function () {},
+            };
+
+            //ui模块    pc的ui组件  移动端的ui组件
+            JD.ui = {};
+            JD.ui.pc = {
+                /*tab组件*/
+                /*与mobile端的tab组件不会相互影响*/
+                tab: function () {
+                    console.log('tab的pc端组件');
+                },
+                /*ppt*/
+                ppt: function () {},
+                /*导航*/
+                nav: function () {}
+            };
+            JD.ui.mobile = {
+                /*tab组件*/
+                tab: function () {
+                    console.log('tab的移动端组件');
+                },
+                /*ppt*/
+                ppt: function () {},
+                /*导航*/
+                nav: function () {}
+            };
+
+            /*页面*/
+            JD.page = {};
+            /*产品相关的页面*/
+            JD.page.product = {};
+            /*订单相关的页面*/
+            JD.page.order = {};
+            /*用户管理相关的页面*/
+            JD.page.user = {};
+            /*金融相关的页面*/
+            JD.page.finance = {};
+
+
+            /*如何访问version*/
+            console.log(JD.verstion);
+            /*如何访问pc端tab方法*/
+            JD.ui.pc.tab();
+            /*如何访问移动端tab方法*/
+            JD.ui.mobile.tab();
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

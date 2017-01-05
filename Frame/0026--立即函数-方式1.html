@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>立即函数-方式1</title>
+    <script>
+        (function () {
+            var name = 'jack';
+            var age = 22;
+            var getName = function () {
+                return name;
+            };
+            var getAge = function () {
+                return age;
+            };
+
+            var json = {
+                name: name,
+                age: age,
+                on: function () {//还可以定义自己的方法
+                    console.log('事件框架的on函数')
+                },
+                in: function () {}
+            };
+
+            window.$$ = json;
+        })();
+
+        $$.on();
+    </script>
+</head>
+<body>
+</body>
+</html>

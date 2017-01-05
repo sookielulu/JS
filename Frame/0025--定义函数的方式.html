@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定义函数的方式</title>
+    <script>
+        //传统
+        function double(x) {
+            return 2*x;
+        }
+        alert(double(10));
+
+        //函数对象
+        var double = new Function('x', 'return 2*x');
+        alert(double(11));
+
+        //半匿名函数
+        var double = function (x) {
+            return 2*x;
+        }
+        alert(double(12));
+
+        //全匿名函数
+        (function () {});
+        //不带参数
+        alert('lucy');
+        //带参数
+        (function (x,y) {
+            alert(x+y);
+        })(2,3);
+        //带返回参数
+        var num = (function (x,y) {
+            return x+y
+        })(2,3);
+        alert('带返回的匿名函数'+num);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>值操作</title>
+    <script src="Myframe--basic.js"></script>
+    <script>
+        window.onload = function () {
+            console.log($$.html('p'));
+
+            $$.html('p','设置');
+            console.log($$.html('p'));
+
+            /*function html(context, value) {
+                var doms = $$.$all(context);
+                if(value) {  //设置值
+                    for(var i = 0; i < doms.length; i++) {
+                        doms[i].innerHTML = value;
+                    }
+                }else {  //获取值
+                    return doms[0].innerHTML;
+                }
+            }*/
+        }
+    </script>
+</head>
+<body>
+<div id="test">
+    <p>hello world</p>
+</div>
+</body>
+</html>

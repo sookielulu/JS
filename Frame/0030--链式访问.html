@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>链式访问</title>
+    <script>
+        window.onload = function () {
+            function Animate(dom, json, duration) {
+                //定时器的句柄
+                this.timer;
+                //间隔时间
+                this.interval = 16;
+                //动画对象
+                //this._obj = {};  //单个物体运动是一个对象，多个则为数组
+                this.queen = [];
+            }
+
+            Animate.prototype = {
+                //动画的本质
+
+                //运行部分
+                _run: function () {
+                    console.log('this is run');
+                    return this;
+                },
+
+
+                //添加部分
+                //接收用户传递的参数
+                add: function () {
+                    console.log('this is add');
+                    return this;
+                },
+
+                //内存回收
+                _destroy: function () {
+                    console.log('this is _destroy');
+                    return this;
+                }
+            };
+
+            var animate = new Animate();
+            animate.add()._run()._destroy();
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

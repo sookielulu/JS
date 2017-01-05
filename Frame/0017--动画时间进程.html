@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画时间进程</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            margin: 100px;
+            background-color: palevioletred;
+            position: absolute;
+        }
+    </style>
+    <script src="Myframe--basic.js"></script>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById('btn');
+            var box = document.getElementById('box');
+            
+            btn.onclick = function () {
+                timer = setInterval(animate,30);
+                animate('#box','left',200,1000);
+            };
+
+            function animate(dom, name, juli, duration) {
+                var now = new Date();
+                var timer;
+                var tween;
+                
+                timer = setInterval(move,30);
+
+                //定义一个函数，封装计算动画时间进程
+                function getTween(now, pass, duration) {
+                    var yongshi = pass - now;
+                    var tween = yongshi / duration;
+                    return tween;
+                }
+
+                function stop() {
+                    clearInterval(timer);
+                }
+
+                function oneProperty(dom,name,start,juli,tween) {
+                    $$.css(dom, name, (start+juli*tween)+'px');
+                }
+
+                function move() {
+                    if(tween >= 1) { 
+                        stop();
+                    }else{
+                        var pass = new Date();
+                        //tween：动画时间进程  = 用时/总时间
+                        //用时：已经走的时间 - 开始时间
+                        tween = getTween(now, pass, duration);
+//                    box.style.left = juli*tween + "px";
+                        oneProperty(dom,name,0,juli,tween);
+                    }
+                }
+
+            }
+        }
+    </script>
+</head>
+<body>
+<button id="btn">start</button>
+<div id="box"></div>
+</body>
+</html>

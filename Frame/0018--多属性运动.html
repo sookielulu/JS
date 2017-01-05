@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多属性运动</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: palevioletred;
+            position: absolute;
+        }
+    </style>
+    <script src="Myframe--basic.js"></script>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById('btn');
+            var box = document.getElementById('box');
+            var json = {left: '300px', width:'200px',height:300};
+
+            btn.onclick = function () {
+                animate('#box',json,2000);
+            };
+
+
+
+            function animate(dom,json,duration) {
+
+                //适配器
+                function adapter(source) {
+                    //给我的数据格式
+                    //var json = {top:'300px',width:'300px'};
+                    //转换成我需要的数据格式
+
+                    var styles = [];
+
+                    for(var item in source) {
+                        var json = {};
+                        //属性名称
+                        json.name = item;
+                        //起始位置
+                        json.start = parseFloat($$.css(dom,item));
+                        //距离
+                        json.juli = parseFloat(source[item]) - json.start;
+
+                        styles.push(json);
+                    }
+
+                    return styles;
+                }
+
+                var now = new Date();
+                var timer;
+                var tween;
+                var eases = {
+                    easeOutExpo: function (t, b, c, d) {
+                        return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+                    },
+                    easeOutBounce: function (t, b, c, d) {
+                        if ((t/=d) < (1/2.75)) {
+                            return c*(7.5625*t*t) + b;
+                        } else if (t < (2/2.75)) {
+                            return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+                        } else if (t < (2.5/2.75)) {
+                            return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+                        } else {
+                            return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+                        }
+                    }
+                };
+
+                timer = setInterval(move,30);
+
+                //定义一个函数，封装计算动画时间进程
+                function getTween(now, pass, duration, ease) {
+                    var yongshi = pass - now;
+                    return eases[ease](yongshi,0,1,duration);
+                }
+
+                function stop() {
+                    clearInterval(timer);
+                }
+
+                function oneProperty(dom,name,start,juli,tween) {
+                    $$.css(dom, name, (start+juli*tween)+'px');
+                }
+
+                function move() {
+                    if(tween >= 1) {
+                        stop();
+                    }else{
+                        var pass = new Date();
+                        //tween：动画时间进程  = 用时/总时间
+                        //用时：已经走的时间 - 开始时间
+                        tween = getTween(now, pass, duration, 'easeOutBounce');
+                        var styles = adapter(json);
+                        for(var i = 0; i < styles.length; i++) {
+                            oneProperty(dom,styles[i].name,styles[i].start,styles[i].juli,tween);
+                        }
+                    }
+                }
+
+            }
+        }
+    </script>
+</head>
+<body>
+<button id="btn">start</button>
+<div id="box"></div>
+</body>
+</html>

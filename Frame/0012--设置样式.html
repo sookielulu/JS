@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设置样式</title>
+    <script src="Myframe--basic.js"></script>
+    <script>
+        window.onload = function () {
+            //传统方式设置样式
+            var doms = $$.$all("p");//获取所有p
+            doms[0].style.color = 'orange';
+            doms[1].style['color'] = 'green';
+            //基本都使用第二种方式，即键值对方式
+            //因为封装框架只能使用第二种（因为需要传参）
+
+
+            //封装函数设置样式
+            setStyle(doms, 'font-size', '30px');
+            function setStyle(doms, key, value) {
+                for(var i = 0; i < doms.length; i++) {
+                    doms[i].style[key] = value;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="container">
+    <p>超人</p>
+    <p>蝙蝠侠</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性操作</title>
+    <style>
+        #title {
+            color: aqua;
+        }
+    </style>
+    <script src="Myframe--basic.js"></script>
+    <script>
+        window.onload = function () {
+            $$.$id('btn').onclick = function () {
+                $$.attr('p', 'id', 'title');
+                $$.attr('p', 'name', 'hello');
+                console.log($$.attr('p','name'));
+                addClass('.p1','haha');
+                removeClass('.p1','p1');
+                console.log(hasClass('#btn','a'));
+            };
+
+            /*function attr(context, key, value) {
+                var doms = $$.$all(context);
+                if(value) {  //设置属性
+                    for(var i = 0; i < doms.length; i++) {
+                        doms[i].setAttribute(key, value);
+                    }
+                }else {  //获取属性
+                    return doms[0].getAttribute(key);
+                }
+            }*/
+            
+            function addClass(context, name) {
+                var doms = $$.$all(context);
+                for (var i = 0; i < doms.length; i++) {
+                    addOneName(doms[i]);
+                }
+
+                //给一个元素添加样式
+                function addOneName(dom) {
+                    dom.className = dom.className + " " + name;
+                }
+            }
+            function removeClass(context, name) {
+                var doms = $$.$all(context);
+                for (var i = 0; i < doms.length; i++) {
+                    removeOneName(doms[i], name);
+                }
+
+                //给一个元素添加样式
+                function removeOneName(dom, name) {
+                    dom.className = dom.className.replace(name,'');
+                }
+            }
+
+            //判断是否有 class 名称为 name 的元素
+            function hasClass(context, name) {
+                var doms = $$.$all(context);
+                var flag = true;
+                for(var i = 0; i < doms.length; i++) {
+                    flag = flag && check(doms[i], name);
+                }
+
+                return flag;
+                function check(element, name) {
+                    return -1 < (" " + element.className + " ").indexOf(" " + name + " ");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<button id="btn">点击此处</button>
+<p class="p1">语文</p>
+<p class="p2">数学</p>
+<p class="p3">英语</p>
+<p class="p4">物理</p>
+</body>
+</html>

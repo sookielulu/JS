@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>锚点</title>
+	<script>
+		window.onload = function(){
+			(function(w){
+				w.addEventListener('hashchange',function(e){
+					console.log('111');
+					console.log(e);
+					//hash属于路径（url）的组成
+					console.log(w.location);
+					//可通过window.location拿到以下所有信息
+
+
+					//http://www.baidu.com:8080/aaa/1.html?id=10#name
+
+					//主机名 hostname:  www.baidu.com
+					//       host: www.baidu.com:8080
+					//端口号 port: 8080
+					//路径 pathname: /aaa/1.html
+					//search: ?id=10
+					//hash: #name
+
+
+
+
+					//通过window.location.href决定发送某个Ajax请求，拿值回来
+					//使html永远停留在某个页面中，异步去拿数据回来
+					var hash = w.location.hash;
+					switch(hash){
+						case '#/index/':
+							console.log('请求index');  
+							//在路径后面加上#/index/则输出'请求index'
+							break;
+						case '#/demo/':
+							console.log('请求demo');
+							break;
+						case '#/my/':
+							console.log('请求my');
+							break;
+					}
+				});
+			})(window);
+		}
+	</script>
+</head>
+<body>
+<a href="#zhutou">找猪头</a>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<pre id="zhutou">
+╭︿︿︿╮
+{/ ·· /}
+ ( (00) ) 
+  ︶︶︶ 
+</pre>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+<p>hahaha</p>
+</body>
+</html>

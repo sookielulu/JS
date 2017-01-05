@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class选择器</title>
+    <style>
+        span {
+            padding: 10px;
+            margin: 20px;
+            background-color: palegreen;
+        }
+    </style>
+    <script src="Myframe--basic.js"></script>
+    <script>
+        window.onload = function () {
+            var spans = $$.$class('allspan');
+            for (var i = 0; i < spans.length; i++) {
+                spans[i].onclick = function () {
+                    this.style.backgroundColor = 'orange';}
+            }
+
+            /*function $class(className) {
+                //获取所有
+                var elements = document.getElementsByTagName('*');
+                var arr = [];
+                //筛选出class为allspan的元素
+                for(var i = 0; i < elements.length; i++) {
+                    if(elements[i].className == className) {
+                        arr.push(elements[i]);
+                    }
+                }
+                return arr;
+            }*/
+        }
+    </script>
+</head>
+<body>
+<div id="mydiv">
+    <span class="allspan">1234</span>
+    <span class="allspan">1234</span>
+    <span class="allspan">1234</span>
+    <span class="allspan">1234</span>
+</div>
+</body>
+</html>

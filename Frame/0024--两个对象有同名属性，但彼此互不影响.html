@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两个对象有同名属性，但彼此互不影响</title>
+    <script>
+
+        //可以定义不同的对象来保存全局变量
+        //也就是将全局变量升级为对象的属性
+        var module1 = function () {
+            this.name = 1
+        }
+        module1.prototype = {}
+
+
+        var module2 = function () {
+            this.name = 2;
+        }
+        module2.prototype = {}
+
+
+        var m1 = new module1();
+        var m2 = new module2();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

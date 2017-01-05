@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>立即函数</title>
+    <script>
+        //立即函数的问题：
+        //封装性太强，别的函数无法调用它的属性
+        (function () {
+            var name = 1;
+            var add = function () {
+                return name;
+            }
+        })();
+
+        (function () {
+           var name2 = name;
+        })();
+
+        //如何解决
+        //1、将我们需要获取的值赋值给window全局变量，使其成为window的一个属性
+        //2、将我们需要获取的值赋值给任意一个全局变量，使其成为这个全局变量的属性
+        //3、return，即传参
+
+        //1、此方式存在的问题：
+        //如果别人需要访问里面的多个函数或变量，那么需要给window定义多个全局变量
+        //那么可以定义一个JSON保存所有需要暴露的函数或变量
+        (function () {
+            var name = 'jack';
+            var add = function () {
+                return name;
+            };
+
+            window.add = add;
+        })();
+
+        (function () {
+            console.log(add());
+            //即为console.log(window.add());  可以省略window
+        })();
+
+        //2、
+        var o = new Object();
+        (function (w, obj) {
+            var name = 'tom';
+            var add = function () {
+                return name;
+            };
+
+            o.add = add;
+        })();
+
+        console.log(o.add());
+
+        //3、
+    </script>
+</head>
+<body>
+
+</body>
+</html>

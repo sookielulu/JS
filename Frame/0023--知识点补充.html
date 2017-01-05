@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>知识点补充</title>
+    <script>
+        window.onload = function () {
+
+            //零参数编程，即采用arguments;
+            function obj() {
+                var option = arguments;
+                var obj = {};
+                obj.name = option[0];
+                obj.age = option[1];
+                return obj;
+            }
+
+
+            var newObj = new obj('lucy', 19);
+            console.log(newObj.name);
+            console.log(newObj.age);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

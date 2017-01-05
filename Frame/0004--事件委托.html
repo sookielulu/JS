@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托</title>
+    <script src="jquery-1.11.1.js" type="text/javascript"></script>
+    <script src="Myframe--basic.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            //采用冒泡机制
+            $("table").on("click", 'td', function (e) {
+                $(this).text('haha');
+            });
+            /*$("ul").on('click', 'li', function () {
+                this.style.color = "green";
+            })*/
+            $("ul").delegate('li', 'click', function () {
+                this.style.color = "green";
+            })
+
+            $$.delegate('ul','onclick','')
+        })
+    </script>
+</head>
+<body>
+<table cellspacing="1">
+    <tr>
+        <td>单元格1-1</td>
+        <td>单元格1-2</td>
+        <td>单元格1-3</td>
+        <td>单元格1-4</td>
+        <td>单元格1-5</td>
+    </tr>
+    <tr>
+        <td>单元格2-1</td>
+        <td>单元格2-2</td>
+        <td>单元格2-3</td>
+        <td>单元格2-4</td>
+        <td>单元格2-5</td>
+    </tr>
+</table>
+<ul id="ul">
+    <li><h3>changecolor</h3></li>
+    <li><h3>changecolor</h3></li>
+    <li><h3>changecolor</h3></li>
+    <li><h3>changecolor</h3></li>
+    <li><h3>changecolor</h3></li>
+    <li><h3>changecolor</h3></li>
+</ul>
+</body>
+</html>

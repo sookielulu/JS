@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>规划入口</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: palevioletred;
+            position: absolute;
+        }
+    </style>
+    <script src="Myframe--basic.js"></script>
+    <script>
+        window.onload = function () {
+
+            function Animate(dom,json,duration) {
+                //定时器的句柄
+                this.timer;
+                //间隔时间
+                this.interval = 16;
+                //动画对象
+                this._obj = {};
+            }
+            Animate.prototype = {
+                //动画的本质
+
+                //运行部分
+                //就是一个循环，循环做一些事情
+                _run: function () {
+                    var that = this;
+                    that.timer = setInterval(function () {
+                        that._move(that._obj);
+                    },that.interval);
+                },
+
+                //每次循环要做的事情
+                _move: function (_obj) {
+                    var that = this;
+                    var dom = _obj.dom;
+                    var styles = _obj.styles;
+                    var pass = new Date();
+                    var tween = that._getTween(_obj.now, pass, _obj.duration, 'easeOutBounce');
+                    if(tween >= 1) {
+                        that._stop(dom, styles);
+                    }else{
+                        that._manyProperty(dom,styles,tween);
+                    }
+                },
+
+                _getTween: function (now, pass, duration, ease) {
+                    var eases = {
+                        easeOutExpo: function (t, b, c, d) {
+                            return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+                        },
+                        easeOutBounce: function (t, b, c, d) {
+                            if ((t/=d) < (1/2.75)) {
+                                return c*(7.5625*t*t) + b;
+                            } else if (t < (2/2.75)) {
+                                return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+                            } else if (t < (2.5/2.75)) {
+                                return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+                            } else {
+                                return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+                            }
+                        }
+                    };
+                    var yongshi = pass - now;
+                    return eases[ease](yongshi,0,1,duration);
+                },
+
+                _stop: function (dom, styles) {
+                    //让动画直接运行到终点，然后停止
+                    this._manyProperty(dom, styles, 1);
+                    clearInterval(this.timer);
+                },
+
+                _oneProperty: function (dom,name,start,juli,tween) {
+                    if(name == 'opacity') {
+                        $$.css(dom, name, (start+juli*tween));
+                    }else {
+                        $$.css(dom, name, (start+juli*tween)+'px');
+                    }
+                },
+                _manyProperty: function (dom,styles,tween) {
+                    for(var i = 0; i < styles.length; i++) {
+                        this._oneProperty(dom,styles[i].name,styles[i].start,styles[i].juli,tween);
+                    }
+                },
+
+
+                //添加部分
+                //接收用户传递的参数
+                add: function (dom,json,duration) {
+                    this._adapter(dom,json,duration);
+                    this._run();
+                },
+                
+                _adapter: function (dom, json, duration) {
+                    this._obj.duration = duration;
+                    this._obj.dom = dom;
+                    this._obj.tween = 0;
+                    this._obj.now = new Date();
+                    this._obj.styles = this.getStyles(dom, json);
+                },
+
+                getStyles: function (dom, source) {
+                    var styles = [];
+
+                    for(var item in source) {
+                        var json = {};
+                        //属性名称
+                        json.name = item;
+                        //起始位置
+                        json.start = parseFloat($$.css(dom,item));
+                        //距离
+                        json.juli = parseFloat(source[item]) - json.start;
+
+                        styles.push(json);
+                    }
+
+                    return styles;
+                },
+                
+                //内存回收
+                _destroy: function () {
+                    
+                }
+            };
+
+
+
+            var animate = new Animate();
+            animate.add('.box',{left:'300px',top:'200px'},2000);
+
+        }
+    </script>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

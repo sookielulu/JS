@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>delegate</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("div").delegate('h3',"click",function () {
+                $(this).css('color','orange');
+            });
+        })
+    </script>
+</head>
+<body>
+<div>
+    <h3>第1个h3元素</h3>
+    <h3>第2个h3元素</h3>
+    <h3>第3个h3元素</h3>
+    <h3>第4个h3元素</h3>
+    <h3>第5个h3元素</h3>
+</div>
+
+<p>第1个p元素</p>
+<p>第2个p元素</p>
+<p>第3个p元素</p>
+<p>第4个p元素</p>
+<p>第5个p元素</p>
+</body>
+</html>

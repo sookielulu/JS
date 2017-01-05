@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阻止冒泡</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script src="Myframe--basic.js"></script>
+    <script>
+        $(function () {
+
+            //
+            /*$("ul[data-type='cityPick']").on('click',function () {
+                alert("父元素ul被点击");
+            });
+            $("ul[data-type='cityPick']").on('click','li',function (e) {
+                alert("子元素li被点击");
+
+                /!*!//标准
+                e.stopPropagation();
+                //早期ie
+                e.cancelBubble = true;*!/
+            });*/
+
+
+            //框架写法
+            $$.click('all',function () {
+                alert('父元素ul被点击');
+            });
+            $$.click('0',function (event) {
+                alert('子元素li被点击');
+                $$.stopPropagation(event);
+            });
+            $$.click('88',function (event) {
+                alert('子元素li被点击');
+                $$.stopPropagation(event);
+            });
+            $$.click('119',function () {
+                alert('子元素li被点击');
+                $$.stopPropagation();
+            })
+        })
+    </script>
+</head>
+<body>
+<ul class="clearfix" data-type = "cityPick" id="all">
+    <li id="0" class="active_sort_opts">全部</li>
+    <li id="88">纽约</li>
+    <li id="119">洛杉矶</li>
+    <li id="138">拉斯维加斯</li>
+    <li id="84">夏威夷</li>
+</ul>
+</body>
+</html>

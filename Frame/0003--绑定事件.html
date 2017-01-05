@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定事件</title>
+    <style>
+        div {
+            background-color: palegreen;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            var div = document.getElementById("div");
+            var btn2 = document.getElementById("btn2");
+            var btn = document.getElementById("btn");
+
+            //传统方式：
+            //元素只能绑定一个事件
+            $("#btn2").on('click', function () {
+                $("#div").html('传统方式1');
+            });
+            $("#btn2").on('click', function () {
+                $("#div").html('传统方式2');
+            });
+
+            //事件流方式  addEventListener
+            //addEventListenert方法第一个参数填写事件名，注意不需要写on，第二个参数可以是一个函数，第三个参数是指在冒泡阶段还是捕获阶段处理事件处理程序,如果为true代表捕获阶段处理,如果是false代表冒泡阶段处理，第三个参数可以省略，大多数情况也不需要用到第三个参数,不写第三个参数默认false
+            btn.addEventListener('click',fn1,false);
+            btn.addEventListener('click',fn2,false);
+            btn.addEventListener('click',fn3,false);
+
+            function fn1() {
+                div.innerHTML += '当前元素：1';
+            }
+            function fn2() {
+                div.innerHTML += '当前元素：2';
+            }
+            function fn3() {
+                div.innerHTML += '当前元素：3';
+            }
+        })
+    </script>
+</head>
+<body>
+<button id="btn2">传统方式</button>
+<button id="btn">事件流方式</button>
+<div id="div"></div>
+</body>
+</html>

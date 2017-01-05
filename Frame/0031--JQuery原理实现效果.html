@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery原理实现效果</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: palegreen;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var frame = function (id) {
+                this.elements = [];
+                return this.$all(id);
+            };
+            frame.prototype = {
+                $all: function (selector, context) {
+                    context = context || document;
+                    this.elements = context.querySelectorAll(selector);//最终结果始终为一个dom的集合
+                },
+                hide: function (context) {
+                    var doms = this.elements;
+                    for(var i = 0; i < doms.length; i++) {
+                        //$$.css(doms[i], 'display', 'none');
+                        this.elements[i].style.display = 'none';
+                    }
+                },
+                show: function (context) {
+                    //var doms = this.elements;
+                    for(var i = 0; i < this.elements.length; i++) {
+                        //$$.css(doms[i], 'display', 'block');
+                        this.elements[i].style.display = 'block';
+                    }
+                },
+                css: function (context, key, value) {
+                    var doms = this.elements;
+
+                    if(doms.length) {//如果获取的是集合
+                        if(value) {
+                            //获取模式
+                            for(var i = 0; i < doms.length; i++) {
+                                setStyle(doms[i], key, value);
+                            }
+                        }else {
+                            return getStyle(doms[0], key);
+                        }
+                    }else{//如果只有1个dom元素
+                        if(value) {
+                            //获取模式
+                            setStyle(doms, key, value);
+                        }else {
+                            return getStyle(doms, key);
+                        }
+                    }
+
+                    //设置
+                    function setStyle(dom, key, value) {
+                        dom.style[key] = value;
+                    }
+                    //获取
+                    function getStyle(dom, key) {
+                        if(dom.currentStyle) {
+                            //IE
+                            return dom.currentStyle[key];
+                        }else {
+                            //标准浏览器
+                            return window.getComputedStyle(dom,null)[key];
+                        }
+                    }
+                }
+            };
+
+
+            var $ = function (id) {
+                return new frame(id);
+            };
+
+            var btn1 = document.getElementById('button1');
+            var btn2 = document.getElementById('button2');
+            var btn3 = document.getElementById('button3');
+            btn1.onclick = function () {
+                $("img").hide();
+            };
+            btn2.onclick = function () {
+                $("img").show();
+            };
+            btn3.onclick = function () {
+                $('div').css('div','width','300px');
+            }
+        }
+    </script>
+</head>
+<body>
+<button id="button1">隐藏</button>
+<button id="button2">显示</button>
+<button id="button3">改变</button>
+<img src="../case/JingDong/image/21.jpg" alt="" id="img1">
+<img src="../case/JingDong/image/daohang--wodejingdong_.jpg" alt="" id="img2">
+<div></div>
+</body>
+</html>
