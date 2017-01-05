@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$仿JQuery选择器</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            /*
+            function $(id) {
+                return document.getElementById(id);
+            }
+            */
+            function getClass(obj) {
+                //支持document.getElementsByClassName()的浏览器
+                if(document.getElementsByClassName){
+                    return document.getElementsByClassName(obj);
+                }
+
+                //不支持document.getElementsByClassName()的浏览器
+                var arr = [];
+                var dom = document.getElementsByTagName("*");//*表示获取所有标签
+                for(var i=0; i<dom.length; i++) {
+                    var txtarr = dom[i].className.split(" ");//分割类名，并转换为数组
+                    //["demo", "test"];
+                    for(var j=0; j<txtarr.length; j++){
+                        if(txtarr[j] == obj) {
+                            arr.push(dom[i]);// 我们要的是div
+                        }
+                    }
+                }
+                return arr;
+
+            }
+            function $(str) {
+                var s = str.charAt(0);
+                var ss = str.substr(1);
+                switch (s) {
+                    case "#":
+                        return document.getElementById(ss);
+                    break;
+                    case ".":
+                        return getClass(ss);
+                    break;
+                    default:
+                        return document.getElementsByTagName(str);
+                }
+            }
+
+            $("#demo").style.backgroundColor = "purple";
+            $(".one")[0].style.backgroundColor = "black";
+        }
+    </script>
+</head>
+<body>
+<div id="demo"></div>
+<div></div>
+<div></div>
+<div class="one"></div>
+<div class="one"></div>
+<div class="one"></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

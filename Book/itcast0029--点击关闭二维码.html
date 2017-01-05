@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击关闭二维码</title>
+    <style>
+        .box {
+            width: 220px;
+            border: 1px solid #cccccc;
+            margin: 100px auto;
+            position: relative;
+        }
+        #close {
+            width: 19px;
+            height: 19px;
+            position: absolute;
+            top: 0;
+            left: -19px;
+            background: url("Image/close.png") no-repeat;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var clo = document.getElementById("close");
+            clo.onclick = function () {
+                this.parentNode.style.display = "none";  //利用parentNode
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div class="box">
+    <img src="Image/erweima.jpg" alt="">
+    <span id="close"></span>
+</div>
+</body>
+</html>

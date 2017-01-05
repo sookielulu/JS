@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arguments属性</title>
+    <script>
+        window.onload = function () {
+            function fn(a, b, c) {
+                console.log(a+b+c);
+                alert(arguments.length);  //返回实参的个数，即为4
+                alert(arguments.callee);  //返回正在执行的函数
+                //在使用函数的递归调用时，推荐使用arguments.callee代替函数本身
+            }
+            fn(1, 3, 4, 5);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

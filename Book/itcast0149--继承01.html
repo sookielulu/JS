@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承01</title>
+    <script>
+        window.onload = function () {
+            //基类  父类
+            var Person = function () {
+                this.name = 'lucy';
+                this.age = 20;
+            }
+            Person.prototype = {
+                say: function () {
+                    console.log('hello');
+                }
+            }
+
+
+            //如何实现继承：
+            //1、构造函数
+            //2、原型
+
+            //构造函数
+            var Student = function () {
+                Person.call(this,arguments);
+
+                //定义自己的属性方法
+                this.num = 001;
+                this.hobby = 'swimming';
+            };
+
+            //原型
+            Student.prototype = new Person();
+
+            //定义自己的属性方法
+            Student.prototype.getTeacher = function () {
+                console.log('hello teacher');
+            };
+
+
+            var s1 = new Student();
+            console.log(s1.name);
+            console.log(s1.say());
+            console.log(s1.num);
+            console.log(s1.getTeacher());
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

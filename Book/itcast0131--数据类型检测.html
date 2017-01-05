@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型检测 </title>
+    <script type="text/javascript">
+        window.onload = function () {
+            function myframe() {
+
+            }
+            myframe.prototype = {
+                //数据类型检测
+                isNumber: function (val) {
+                    return typeof val === 'number' && isfinite(val);
+                },
+                isBoolean: function (val) {
+                    return typeof val === 'boolean';
+                },
+                isString: function (val) {
+                    return typeof val === 'string';
+                },
+                isUndefined: function (val) {
+                    return typeof val === 'undefined';
+                },
+                isObj: function (str) {
+                    if(str === null || typeof str === 'undefined') {
+                        return false;
+                    }
+                    return typeof str === 'object';
+                },
+                isArray: function (arr) {
+                    if(arr === null || typeof arr === 'undefined') {
+                        return false;
+                    }
+                    return arr.constructor === Array;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <style>
+        .clock {
+            width: 600px;
+            height: 600px;
+            background: url("Image/clock.jpg") no-repeat;
+            position: relative;
+            transition: all 1s;
+        }
+        .clock div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .h {
+            background: url("Image/hour.png") no-repeat center center;
+        }
+        .m {
+            background: url("Image/minute.png") no-repeat center center;
+        }
+        .s {
+            background: url("Image/second.png") no-repeat center center;
+        }
+    </style>
+</head>
+<body>
+<div class="clock">
+    <div class="h" id="hour"></div>
+    <div class="m" id="minu"></div>
+    <div class="s" id="sec"></div>
+</div>
+
+
+<script type="text/javascript">
+    var h = document.getElementsByTagName('hour');
+    var m = document.getElementsByTagName('minu');
+    var s = document.getElementsByTagName('sec');
+    setInterval(function () {
+        var now = new Date();
+        var msec = now.getMilliseconds();
+        var sec = now.getSeconds() + msec/1000;
+        var min = now.getMinutes() + sec/60;
+        var hour = now.getHours() % 12 + min/60;
+
+        msec.style.MozTransform = 'rotate(' + 6 * sec + 'deg)';
+
+    },1000)
+</script>
+</body>
+</html>

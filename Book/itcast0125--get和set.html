@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>get set</title>
+    <script src="jquery-2.2.4.js"></script>
+    <script type="text/javascript">
+       $(function () {
+            function Product() {
+                this.name = '';
+                this.price = 4000;
+                this.description = '';
+                this.produceDate = '';
+
+
+                //格式
+                Object.defineProperty(this, "price", {
+
+//                    value: 1000,
+//                    writable: false,
+                    //这里将writable设为false后，表示不可改，则显示为默认值或设定value值
+                    //可用这个方法保护固定不变的信息，例如版本号或其他安全信息等
+
+                    //给price属性赋值时会自动调用get
+                    get: function () {
+                        return price*0.9;
+                    },
+
+                    //当price值满足set中的条件：value>10000时，调用set函数
+                    set: function (value) {
+                        if (value > 10000) {
+                            alert('价格需在0-10000之间');
+                        }else {
+                            price = value;
+                        }
+                    }
+                });
+
+                Object.defineProperty(this, "produceDate", {
+                    get: function () {
+                        return produceDate.toLocaleString();
+                        //return produceDate.toLocaleDateString();
+                        //return produceDate.toLocaleTimeString();
+                        //toLocaleString()的作用是将任何的日期格式转换为本地格式
+                        //也可用toLocaleDateString()，表示只获取年月日，没有时分秒
+                        //     toLocaleTimeString()，表示只有时分秒，没有年月日
+                    },
+                    set: function (value) {
+                        produceDate = value;
+                    }
+                })
+            }
+
+            var iphone = new Product();
+            iphone.name = '新款iPhone7到货';
+            iphone.price = 7000;
+            iphone.description = '好好好';
+            iphone.produceDate = '10/1/2016';
+            $('.title').html(iphone.name);
+            $('.price').html(iphone.price);
+            $('.description').html(iphone.description);
+            $('.produceDate').html(iphone.produceDate);
+        })
+    </script>
+</head>
+<body>
+<div class="phone">
+    <h3 class="title"></h3>
+    <div class="price"></div>
+    <p class="description"></p>
+    <p class="produceDate"></p>
+</div>
+</body>
+</html>

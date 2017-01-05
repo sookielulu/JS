@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度换肤</title>
+    <style>
+        body {
+            background: url("Image/BaiduChange1.jpg") top center;
+        }
+        .box {
+            height: 150px;
+            background: rgba(255, 255, 255, .3);
+            text-align: center;
+            padding-top: 50px;
+        }
+        .box img {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload = function () {       /*window.onload为“入口函数”表示页面加载完才执行*/
+            var pic1 = document.getElementById("pic1");
+            var pic2 = document.getElementById("pic2");
+            var pic3 = document.getElementById("pic3");
+
+            pic1.onclick = function () {
+                document.body.style.backgroundImage = "url(Image/BaiduChange1.jpg)";
+            }
+            pic2.onclick = function () {
+                document.body.style.backgroundImage = "url(Image/BaiduChange2.jpg)";
+            }
+            pic3.onclick = function () {
+                document.body.style.backgroundImage = "url(Image/BaiduChange3.jpg)";
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div class="box">
+    <img src="Image/BaiduChange1.jpg" alt="" width="150" id="pic1">
+    <img src="Image/BaiduChange2.jpg" alt="" width="150" id="pic2">
+    <img src="Image/BaiduChange3.jpg" alt="" width="150" id="pic3">
+</div>
+</body>
+</html>

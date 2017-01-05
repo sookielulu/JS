@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>访问CSS属性</title>
+    <style>
+        div {
+            background-color: pink;
+            position: absolute;
+            top: 20px;
+            left: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box = document.getElementById("box");
+            console.log(box.style.left);
+            console.log(box.style["left"]); //中括号写法，但只可取 行列式 中的属性
+
+            function fn(attr) {
+                console.log(box.style[attr]);
+            }
+
+            fn("height");
+            fn("width");
+        }
+    </script>
+</head>
+<body>
+<div id="box" style="left:30px;width:100px;height:100px;"></div>
+</body>
+</html>
